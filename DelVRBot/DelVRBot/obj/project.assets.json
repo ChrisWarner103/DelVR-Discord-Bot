@@ -11,7 +11,7 @@
           "lib/netstandard2.0/ConcurrentCollections.dll": {}
         }
       },
-      "DSharpPlus/4.0.0-rc1": {
+      "DSharpPlus/4.0.0-nightly-00760": {
         "type": "package",
         "dependencies": {
           "Emzi0767.Common": "2.2.2",
@@ -30,10 +30,10 @@
           "lib/netstandard2.0/DSharpPlus.dll": {}
         }
       },
-      "DSharpPlus.CommandsNext/4.0.0-rc1": {
+      "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
         "type": "package",
         "dependencies": {
-          "DSharpPlus": "4.0.0-rc1",
+          "DSharpPlus": "4.0.0-nightly-00760",
           "Microsoft.Extensions.DependencyInjection": "3.1.7"
         },
         "compile": {
@@ -43,11 +43,11 @@
           "lib/netstandard2.0/DSharpPlus.CommandsNext.dll": {}
         }
       },
-      "DSharpPlus.Interactivity/4.0.0-rc1": {
+      "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
         "type": "package",
         "dependencies": {
           "ConcurrentHashSet": "1.1.0",
-          "DSharpPlus": "4.0.0-rc1"
+          "DSharpPlus": "4.0.0-nightly-00760"
         },
         "compile": {
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {}
@@ -56,10 +56,10 @@
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {}
         }
       },
-      "DSharpPlus.VoiceNext/4.0.0-rc1": {
+      "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
         "type": "package",
         "dependencies": {
-          "DSharpPlus": "4.0.0-rc1",
+          "DSharpPlus": "4.0.0-nightly-00760",
           "DSharpPlus.VoiceNext.Natives": "1.0.0",
           "System.Threading.Channels": "4.7.0"
         },
@@ -1294,53 +1294,49 @@
         "lib/netstandard2.0/ConcurrentCollections.xml"
       ]
     },
-    "DSharpPlus/4.0.0-rc1": {
-      "sha512": "uuOdv1IjXbPXzTYXL0f/cDcXVTAXfLLAgU/Bxb2GgGGLKqikdV1oc9AlFxix4cNZlOcj96nEq4ndzECEyN6MLg==",
+    "DSharpPlus/4.0.0-nightly-00760": {
+      "sha512": "mwt6FQ4OneWdWYVyHmfZCq+epQ4xIh7/qsZUCjRnLlPxYAyS3vaM0D6qEoWbpvuLso+JOXq0JxLoORzTqnWYxg==",
       "type": "package",
-      "path": "dsharpplus/4.0.0-rc1",
+      "path": "dsharpplus/4.0.0-nightly-00760",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
-        "dsharpplus.4.0.0-rc1.nupkg.sha512",
+        "dsharpplus.4.0.0-nightly-00760.nupkg.sha512",
         "dsharpplus.nuspec",
         "lib/netstandard2.0/DSharpPlus.dll",
         "lib/netstandard2.0/DSharpPlus.xml"
       ]
     },
-    "DSharpPlus.CommandsNext/4.0.0-rc1": {
-      "sha512": "aK3H+WgoA9Gwvkzl9mul7Va+jijA8ajOZ6s8mBLW9iCGAJjVl7DUxI256AFAS1YvGRjeR7Ar61fwq6z7daZp0w==",
+    "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
+      "sha512": "lZ85OtxjGcss1S+YOnh71PA5yeFI6V9nLJuGTWwB4EkClIWE7opsgsncelGa92HtGRbN8X1/jW+ja3KPFlIHhQ==",
       "type": "package",
-      "path": "dsharpplus.commandsnext/4.0.0-rc1",
+      "path": "dsharpplus.commandsnext/4.0.0-nightly-00760",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
-        "dsharpplus.commandsnext.4.0.0-rc1.nupkg.sha512",
+        "dsharpplus.commandsnext.4.0.0-nightly-00760.nupkg.sha512",
         "dsharpplus.commandsnext.nuspec",
         "lib/netstandard2.0/DSharpPlus.CommandsNext.dll",
         "lib/netstandard2.0/DSharpPlus.CommandsNext.xml"
       ]
     },
-    "DSharpPlus.Interactivity/4.0.0-rc1": {
-      "sha512": "jzWMdOjD3w7U2oiNlkgOwKXjZWFvnvS9wGkZRV6K5vIcOB5KzLQsPu1cAj9Pv5pwV7zcxocJvfbq/2psWcSi5g==",
+    "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
+      "sha512": "Kwz31MgnJw3Qh5FJkGvQLilun0RdMuWW/3BNnU3neaMts8h7g2BUEbaUSYSUTHeQjsM3Um1ZlDKPSjKpRLRGVw==",
       "type": "package",
-      "path": "dsharpplus.interactivity/4.0.0-rc1",
+      "path": "dsharpplus.interactivity/4.0.0-nightly-00760",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
-        "dsharpplus.interactivity.4.0.0-rc1.nupkg.sha512",
+        "dsharpplus.interactivity.4.0.0-nightly-00760.nupkg.sha512",
         "dsharpplus.interactivity.nuspec",
         "lib/netstandard2.0/DSharpPlus.Interactivity.dll",
         "lib/netstandard2.0/DSharpPlus.Interactivity.xml"
       ]
     },
-    "DSharpPlus.VoiceNext/4.0.0-rc1": {
-      "sha512": "RxczqNfAeisf3sCzh4axStIaFw8VzXxv5Be98uTkV/vVOOMrmyvt+vbkrKsYbl+0pXjO1T+zSJ/cLuPJf7Y/OQ==",
+    "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
+      "sha512": "uR9hpRpaB0BMTpHoxTptULSMTUNOGeX2pI5sUBt+3dcUCHCoI8ZEPGza8C9C23lf2F3gpR1ezfFAL3ttrSnIlw==",
       "type": "package",
-      "path": "dsharpplus.voicenext/4.0.0-rc1",
+      "path": "dsharpplus.voicenext/4.0.0-nightly-00760",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
-        "dsharpplus.voicenext.4.0.0-rc1.nupkg.sha512",
+        "dsharpplus.voicenext.4.0.0-nightly-00760.nupkg.sha512",
         "dsharpplus.voicenext.nuspec",
         "lib/netstandard2.0/DSharpPlus.VoiceNext.dll",
         "lib/netstandard2.0/DSharpPlus.VoiceNext.xml"
@@ -4287,19 +4283,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chris\\.nuget\\packages\\": {}
+    "C:\\Users\\ChrisWarner\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
+      "projectUniqueName": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
       "projectName": "DelVRBot",
-      "projectPath": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
-      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\obj\\",
+      "projectPath": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
+      "packagesPath": "C:\\Users\\ChrisWarner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ChrisWarner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4307,7 +4307,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.emzi0767.com/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -4355,50 +4356,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "DelVRBot depends on DSharpPlus (>= 4.0.0-nightly-00760) but DSharpPlus 4.0.0-nightly-00760 was not found. An approximate best match of DSharpPlus 4.0.0-rc1 was resolved.",
-      "libraryId": "DSharpPlus",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "DelVRBot depends on DSharpPlus.CommandsNext (>= 4.0.0-nightly-00760) but DSharpPlus.CommandsNext 4.0.0-nightly-00760 was not found. An approximate best match of DSharpPlus.CommandsNext 4.0.0-rc1 was resolved.",
-      "libraryId": "DSharpPlus.CommandsNext",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "DelVRBot depends on DSharpPlus.Interactivity (>= 4.0.0-nightly-00760) but DSharpPlus.Interactivity 4.0.0-nightly-00760 was not found. An approximate best match of DSharpPlus.Interactivity 4.0.0-rc1 was resolved.",
-      "libraryId": "DSharpPlus.Interactivity",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "DelVRBot depends on DSharpPlus.VoiceNext (>= 4.0.0-nightly-00760) but DSharpPlus.VoiceNext 4.0.0-nightly-00760 was not found. An approximate best match of DSharpPlus.VoiceNext 4.0.0-rc1 was resolved.",
-      "libraryId": "DSharpPlus.VoiceNext",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }

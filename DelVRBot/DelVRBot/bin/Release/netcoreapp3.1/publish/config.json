@@ -1,0 +1,33 @@
+{
+  "token": "NzgxMTQ2NTY2NjM4NDM2Mzcy.X75Zbg.4OFyPmSmPv699gFOyeT-92jlamU",
+  "prefix": "!",
+  "guild": 695835309270761472,
+  "reactionRolesChannel": 780748391457620001,
+  "reactionRolesMesage": 12,
+  "discordEmojis": [
+    {
+      "emojis": [
+        {
+          "name": ":ChrisGag:"
+        },
+        {
+          "name": ":ChrisThink:"
+        }
+      ]
+    }
+  ],
+  "discordRoles": [
+    {
+      "roles": [
+        {
+          "id": 738025540593778700,
+          "name": "Looking For Group"
+        },
+        {
+          "id": 782768719796502549,
+          "name": "Dungeon Master"
+        }
+      ]
+    }
+  ]
+}

@@ -52,3 +52,30 @@ C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\Del
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.csproj.CopyComplete
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.dll
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.pdb
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.exe
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.deps.json
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.runtimeconfig.json
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.runtimeconfig.dev.json
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DelVRBot.pdb
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\ConcurrentCollections.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DSharpPlus.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DSharpPlus.CommandsNext.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DSharpPlus.Interactivity.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\DSharpPlus.VoiceNext.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Emzi0767.Common.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\runtimes\win-x64\native\libopus.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\runtimes\win-x64\native\libsodium.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\runtimes\win-x86\native\libopus.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\runtimes\win-x86\native\libsodium.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.csprojAssemblyReference.cache
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.AssemblyInfoInputs.cache
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.AssemblyInfo.cs
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.csproj.CopyComplete
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.pdb

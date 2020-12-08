@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj": {}
+    "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj": {
+    "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
+        "projectUniqueName": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
         "projectName": "DelVRBot",
-        "projectPath": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
-        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\Desktop\\DelVR Bot\\DelVRBot\\DelVRBot\\obj\\publish\\win-x64\\",
+        "projectPath": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\DelVRBot.csproj",
+        "packagesPath": "C:\\Users\\ChrisWarner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ChrisWarner\\source\\repos\\DelVR-Bot\\DelVR-Bot\\DelVRBot\\DelVRBot\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ChrisWarner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +25,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.emzi0767.com/api/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -65,26 +69,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[3.1.1, 3.1.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[3.1.1, 3.1.1]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[3.1.1, 3.1.1]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
