@@ -265,3 +265,4 @@ C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Rele
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\win-x64\DelVRBot.csproj.CopyComplete
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\win-x64\DelVRBot.dll
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\win-x64\DelVRBot.pdb
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\win-x64\DelVRBot.csprojAssemblyReference.cache

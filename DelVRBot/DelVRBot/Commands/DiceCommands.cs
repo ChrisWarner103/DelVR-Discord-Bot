@@ -1,4 +1,5 @@
-﻿using DSharpPlus.CommandsNext;
+﻿using DelVRBot.Attributes;
+using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using System;
 using System.Collections.Generic;
@@ -7,25 +8,13 @@ using System.Threading.Tasks;
 
 namespace DelVRBot.Commands
 {
-    
-    [Group("Dice")]
+    //[RequireCatagories(ChannelCheckMode.Any, "Playing Area")]
     [Description("These commands are used to roll dice")]
     public class DiceCommands : BaseCommandModule
     {
-        [GroupCommand]
-        public async Task Rolling(CommandContext ctx)
-        {
-            await ctx.Channel.SendMessageAsync("This is a dice!");
-        }
 
-        [Command("chris")]
-        public async Task Ping(CommandContext ctx)
-        {
-            await ctx.Channel.SendMessageAsync("<a:ChrisDrink:701141538700394546>").ConfigureAwait(false);
-        }
-
-        [Command("roll")]
-        [Aliases("r")]
+        //[CustomGroup("Dice")]
+        [Command("roll"), Aliases("r")]
         [Description("Roll is used to roll any combination of dice in the `XdY` format. (1d6, 2d8, etc)\nIn emote format.")]
         public async Task RollDice(CommandContext ctx, [RemainingText] string command)
         {
@@ -455,8 +444,7 @@ namespace DelVRBot.Commands
             
         }
 
-        [Command("rollt")]
-        [Aliases("rt")]
+        [Command("rollt"), Aliases("rt")]
         [Description("Rollt is used to roll any combination of dice in the `XdY` format. (1d6, 2d8, etc)\nIn text format.")]
         public async Task RollDiceText(CommandContext ctx, [RemainingText] string command)
         {

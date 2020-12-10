@@ -21,5 +21,10 @@ namespace DelVRBot
 
         [JsonProperty("reactionRolesMesage")]
         public ulong ReactionMessage { get; private set; }
+
+        [JsonProperty("reactionRolesChannel")]
+        public ulong ReactionChannel { get; private set; }
+        [JsonProperty("guild")]
+        public ulong Guild { get; private set; }
     }
 }

@@ -21,7 +21,7 @@ namespace DelVRBot
 {
     class Bot
     {
-        public DiscordClient Client { get; private set; }
+        public static DiscordClient Client { get; set; }
         public CommandsNextExtension Commands { get; private set; }
         public VoiceNextExtension Voice { get; set; }
         public InteractivityExtension interactivity { get; private set; }
@@ -35,16 +35,18 @@ namespace DelVRBot
         public DiscordEmoji dungeonMasterEmoji { get; set; }
         public DiscordEmoji lookingForGroupEmoji { get; set; }
 
-        public List<string> emojiNames { get; private set; }
-        public List<ulong> roleIDs { get; private set; }
+        public static List<string> emojiNames { get; private set; }
+        public static List<ulong> roleIDs { get; private set; }
 
-        public List<DiscordEmoji> roleEmojis { get; private set; }
-        public List<DiscordRole> discordRoles { get; private set; }
+        public static List<DiscordEmoji> roleEmojis { get; private set; }
+        public static List<DiscordRole> discordRoles { get; private set; }
+
+        public static string json { get; set; }
 
 
         public async Task RunAsyn()
         {
-            var json = string.Empty;
+            json = string.Empty;
 
             using (var fs = File.OpenRead("config.json"))
             using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
@@ -62,7 +64,10 @@ namespace DelVRBot
             };
 
             Client = new DiscordClient(config);
-            Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
+            if (!Program.DebugMode)
+                Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
+            else
+                Guild = await Client.GetGuildAsync(configJson.Guild, true).ConfigureAwait(false);
 
             Client.Ready += OnClientReady;
 
@@ -75,9 +80,8 @@ namespace DelVRBot
             {
                 StringPrefixes = new string[] { configJson.Prefix },
                 EnableMentionPrefix = true,
-                EnableDms = false,
+                EnableDms = true,
                 DmHelp = true,
-                
             };
 
             var result = JObject.Parse(json);
@@ -87,32 +91,36 @@ namespace DelVRBot
             var emojis = JArray.FromObject(discordEmojis);
             var roles = JArray.FromObject(discordRoles);
 
-            //var test = JToken.Parse(":ChrisThink:");
-
-            //emojis.Add(test);
-
             emojiNames = new List<string>();
             roleIDs = new List<ulong>();
 
             foreach (var result1 in emojis)
             {
-                foreach (JObject JEmojis in result1["emojis"])
+                foreach (JArray JEmojis in result1["emojis"])
                 {
-                    string name = JEmojis["name"].ToString();
+                    for (int i = 0; i < JEmojis.Count; i++)
+                    {
+                        string name = JEmojis[i]["name"].ToString();
 
-                    emojiNames.Add(name);
+                        emojiNames.Add(name);
+                    }
+
                 }
             }
 
             foreach (var result2 in roles)
             {
-                foreach (JObject JRoles in result2["roles"])
+                foreach (JArray JRoles in result2["roles"])
                 {
-                    string idString = JRoles["id"].ToString();
+                    for (int i = 0; i < JRoles.Count; i++)
+                    {
+                        string idString = JRoles[i]["id"].ToString();
 
-                    ulong id = UInt64.Parse(idString);
+                        ulong id = UInt64.Parse(idString);
 
-                    roleIDs.Add(id);
+                        roleIDs.Add(id);
+                    }
+
                 }
             }
 
@@ -127,9 +135,24 @@ namespace DelVRBot
 
             Voice = Client.UseVoiceNext();
 
+            DiscordChannel roleReactChannel;
 
-            DiscordChannel roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
-            reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
+            if (!Program.DebugMode)
+            {
+                roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
+                reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
+            }
+
+            //This is only called when there are values inside the config file. Otherwise it is ignored
+            if (configJson.ReactionChannel != 0)
+            {
+                roleReactChannel = await Client.GetChannelAsync(configJson.ReactionChannel).ConfigureAwait(false);
+
+                if (configJson.ReactionMessage != 0)
+                {
+                    reactionMessage = await roleReactChannel.GetMessageAsync(configJson.ReactionMessage).ConfigureAwait(false);
+                }
+            }
 
             await RoleReactionMessage();
 
@@ -143,6 +166,7 @@ namespace DelVRBot
             return Task.CompletedTask;
         }
 
+        //When the bot is restarted this Task is run so that the reaction role message still works.
         public async Task RoleReactionMessage()
         {
             roleEmojis = new List<DiscordEmoji>();
@@ -150,24 +174,27 @@ namespace DelVRBot
 
             for (int i = 0; i < emojiNames.Count; i++)
             {
-                roleEmojis.Add(DiscordEmoji.FromName(Client, emojiNames[i]));
+                roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
                 discordRoles.Add(Guild.GetRole(roleIDs[i]));
             }
 
             var interactivity = Client.GetInteractivity();
+
+            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
 
             while (true)
             {
                 var reactionResults = await interactivity.WaitForReactionAsync(
                     x => x.Message == reactionMessage).ConfigureAwait(false);
 
-                Client.MessageReactionRemoved += Client_MessageReactionRemoved;
-
                 if (reactionResults.Result != null)
                 {
                     for (int i = 0; i < roleEmojis.Count; i++)
                     {
-                        if(reactionResults.Result.Emoji == roleEmojis[i])
+
+                        string emojiName = reactionResults.Result.Emoji.GetDiscordName();
+
+                        if (emojiName == roleEmojis[i])
                         {
                             DiscordMember reactedUser = (DiscordMember)reactionResults.Result.User;
 
@@ -185,17 +212,13 @@ namespace DelVRBot
 
             for (int i = 0; i < roleEmojis.Count; i++)
             {
-                if (e.Emoji == roleEmojis[i] && discordMemeber.Roles.Contains(discordRoles[i]))
+                string emojiName = e.Emoji.GetDiscordName();
+                if (emojiName == roleEmojis[i] && discordMemeber.Roles.Contains(discordRoles[i]))
                 {
                     await discordMemeber.RevokeRoleAsync(discordRoles[i]).ConfigureAwait(false);
+                    return;
                 }
             }
-        }
-
-        public struct DiscordInfo
-        {
-            [JsonProperty("name")]
-            public string Name { get; set; }
         }
     }
 }

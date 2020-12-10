@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using DelVRBot.Attributes;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Converters;
 using DSharpPlus.CommandsNext.Entities;
 using DSharpPlus.Entities;
+using static DSharpPlus.Entities.DiscordEmbedBuilder;
 
 namespace DelVRBot
 {
@@ -15,28 +18,29 @@ namespace DelVRBot
     {
         private StringBuilder MessageBuilder { get; }
 
+        private string EmbedTitle;
+        private EmbedThumbnail EmbedImage;
+        private string helpDescription;
+
         public CustomHelpFormatter(CommandContext ctx) : base(ctx)
         {
             this.MessageBuilder = new StringBuilder();
+            this.EmbedImage = new EmbedThumbnail();
         }
 
         // this method is called first, it sets the command
         public override BaseHelpFormatter WithCommand(Command command)
         {
-            this.MessageBuilder.Append("Command: ")
-               .AppendLine(Formatter.Bold(command.Name))
-               .AppendLine();
+
+            if (command.Name.ToLower() == "roll" || command.Name.ToLower() == "rollt")
+            {
+                EmbedTitle = Formatter.Bold("![roll|r]");
+                helpDescription = File.ReadAllText("DiceHelpDescription.txt");
+                //EmbedImage.Url = "../Images/D20_20_Green.png";
+            }
 
 
-            this.MessageBuilder.Append("Description: ")
-                .AppendLine(command.Description)
-                .AppendLine();
-
-            if (command is CommandGroup)
-                this.MessageBuilder.AppendLine("This group has a standalone command.").AppendLine();
-
-            this.MessageBuilder.Append("Aliases: ")
-                .AppendLine(string.Join(", ", command.Aliases))
+            this.MessageBuilder.Append(helpDescription)
                 .AppendLine();
 
             return this;
@@ -47,10 +51,33 @@ namespace DelVRBot
         // won't be called
         public override BaseHelpFormatter WithSubcommands(IEnumerable<Command> subcommands)
         {
-            this.MessageBuilder.Append("Subcommands: ")
-                .AppendLine(string.Join(", ", subcommands.Select(xc => xc.Name)) + subcommands.Select(xc => xc.Description))
+            //subcommands = subcommands.Where(c => c.Name != "help").ToList();
+
+            //var list = subcommands.Select(g => g.CustomAttributes.OfType<CustomGroupAttribute>()).ToList();
+
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    var string1 = list[i].Select(n => n.GroupName);
+            //}
+
+            //var yes = subcommands.Select(g => g.CustomAttributes.Where(t => t.TypeId)).ToList();
+
+            //var test = yes.Select(n => n).ToList();
+
+            EmbedTitle = string.Empty;
+            //EmbedImage.Url = "../Images/DelVR Logo.png";
+            helpDescription = File.ReadAllText("HelpDescription.txt");
+
+
+            this.MessageBuilder.Append(helpDescription)
                 .AppendLine();
 
+            return this;
+        }
+
+        public BaseHelpFormatter Groups(IEnumerable<CustomGroupAttribute> groups)
+        {
+            this.MessageBuilder.Append(groups.Select(xc => xc.GroupName));
             return this;
         }
 
@@ -58,13 +85,14 @@ namespace DelVRBot
         // message, and return it
         public override CommandHelpMessage Build()
         {
-            var joinEmbed = new DiscordEmbedBuilder
+            var helpEmbed = new DiscordEmbedBuilder
             {
-                Title = "Commands",
+                Title = EmbedTitle,
+                //Thumbnail = EmbedImage,
                 Color = DiscordColor.Orange,
-                Description = "These are all the current commands \n" + this.MessageBuilder.ToString(),
+                Description = this.MessageBuilder.ToString(),
             };
-            return new CommandHelpMessage(embed: joinEmbed);
+            return new CommandHelpMessage(embed: helpEmbed);
         }
     }
 }
