@@ -142,7 +142,7 @@ namespace DelVRBot.Commands
 
                 if (reactionResults.Result.Emoji == dungeonMasterEmoji)
                 {
-                    if (Program.DebugMode)
+                    if (!Program.DebugMode)
                     {
                         var role = ctx.Guild.GetRole(roleIDs[0]);
 
@@ -153,6 +153,7 @@ namespace DelVRBot.Commands
                     else
                     {
                         var role = ctx.Guild.GetRole(roleIDs[0]);
+                        Console.WriteLine(role);
 
                         reactedUser = (DiscordMember)reactionResults.Result.User;
 
@@ -162,7 +163,7 @@ namespace DelVRBot.Commands
                 }
                 else if (reactionResults.Result.Emoji == lookingForGroupEmoji)
                 {
-                    if (Program.DebugMode)
+                    if (!Program.DebugMode)
                     {
                         var role = ctx.Guild.GetRole(roleIDs[1]);
 
@@ -173,6 +174,7 @@ namespace DelVRBot.Commands
                     else
                     {
                         var role = ctx.Guild.GetRole(roleIDs[1]);
+                        Console.WriteLine(role);
 
                         reactedUser = (DiscordMember)reactionResults.Result.User;
 

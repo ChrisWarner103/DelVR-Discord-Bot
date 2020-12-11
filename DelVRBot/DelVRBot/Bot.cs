@@ -64,7 +64,7 @@ namespace DelVRBot
             };
 
             Client = new DiscordClient(config);
-            if (!Program.DebugMode)
+            if (Program.DebugMode)
                 Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
             else
                 Guild = await Client.GetGuildAsync(configJson.Guild, true).ConfigureAwait(false);
@@ -137,7 +137,7 @@ namespace DelVRBot
 
             DiscordChannel roleReactChannel;
 
-            if (!Program.DebugMode)
+            if (Program.DebugMode)
             {
                 roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
                 reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
@@ -154,7 +154,7 @@ namespace DelVRBot
                 }
             }
 
-            await RoleReactionMessage();
+            await RoleReactionMessage().ConfigureAwait(false);
 
 
             //Anything added to this function needs to be before this
@@ -176,6 +176,9 @@ namespace DelVRBot
             {
                 roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
                 discordRoles.Add(Guild.GetRole(roleIDs[i]));
+                Console.WriteLine(Guild);
+                Console.WriteLine(roleIDs[i]);
+                Console.WriteLine(discordRoles[i]);
             }
 
             var interactivity = Client.GetInteractivity();
@@ -197,8 +200,9 @@ namespace DelVRBot
                         if (emojiName == roleEmojis[i])
                         {
                             DiscordMember reactedUser = (DiscordMember)reactionResults.Result.User;
+                            Console.WriteLine(discordRoles[i]);
 
-                            await reactedUser.GrantRoleAsync(discordRoles[i]).ConfigureAwait(false);
+                            await reactedUser.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
                         }
                     }
                 }
