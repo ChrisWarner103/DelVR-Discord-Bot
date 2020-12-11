@@ -64,10 +64,10 @@ namespace DelVRBot
             };
 
             Client = new DiscordClient(config);
-            if (Program.DebugMode)
-                Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
-            else
-                Guild = await Client.GetGuildAsync(configJson.Guild, true).ConfigureAwait(false);
+            //if (Program.DebugMode)
+            //    Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
+            //else
+            Guild = await Client.GetGuildAsync(configJson.Guild, true).ConfigureAwait(false);
 
             Client.Ready += OnClientReady;
 
@@ -131,17 +131,21 @@ namespace DelVRBot
 
             Commands.SetHelpFormatter<CustomHelpFormatter>();
 
+            Client.MessageReactionAdded += Client_MessageReactionAdded;
+            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
+            Client.Resumed += Client_Resumed;
+
             await Client.ConnectAsync();
 
             Voice = Client.UseVoiceNext();
 
             DiscordChannel roleReactChannel;
 
-            if (Program.DebugMode)
-            {
-                roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
-                reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
-            }
+            //if (Program.DebugMode)
+            //{
+            //    roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
+            //    reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
+            //}
 
             //This is only called when there are values inside the config file. Otherwise it is ignored
             if (configJson.ReactionChannel != 0)
@@ -154,11 +158,80 @@ namespace DelVRBot
                 }
             }
 
-            await RoleReactionMessage().ConfigureAwait(false);
+            //await RoleReactionMessage().ConfigureAwait(false);
 
 
             //Anything added to this function needs to be before this
             await Task.Delay(-1);
+        }
+
+        private async Task Client_MessageReactionRemoved(DiscordClient sender, MessageReactionRemoveEventArgs e)
+        {
+            roleEmojis = new List<DiscordEmoji>();
+            discordRoles = new List<DiscordRole>();
+
+            for (int i = 0; i < emojiNames.Count; i++)
+            {
+                roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
+                discordRoles.Add(Guild.GetRole(roleIDs[i]));
+            }
+
+            DiscordUser discordUser = await sender.GetUserAsync(e.User.Id);
+            DiscordMember discordMemeber = await e.Guild.GetMemberAsync(discordUser.Id);
+
+            for (int i = 0; i < roleEmojis.Count; i++)
+            {
+                string emojiName = e.Emoji.GetDiscordName();
+                if (emojiName == roleEmojis[i] && discordMemeber.Roles.Contains(discordRoles[i]))
+                {
+                    await discordMemeber.RevokeRoleAsync(discordRoles[i]).ConfigureAwait(false);
+                    return;
+                }
+            }
+        }
+
+        private async Task Client_MessageReactionAdded(DiscordClient sender, MessageReactionAddEventArgs e)
+        {
+            roleEmojis = new List<DiscordEmoji>();
+            discordRoles = new List<DiscordRole>();
+
+            for (int i = 0; i < emojiNames.Count; i++)
+            {
+                roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
+                discordRoles.Add(Guild.GetRole(roleIDs[i]));
+            }
+
+            DiscordUser discordUser = await sender.GetUserAsync(e.User.Id);
+            DiscordMember discordMemeber = await e.Guild.GetMemberAsync(discordUser.Id);
+
+            for (int i = 0; i < roleEmojis.Count; i++)
+            {
+
+                string emojiName = e.Emoji.GetDiscordName();
+
+                if (emojiName == roleEmojis[i])
+                {
+                    await discordMemeber.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
+                    return;
+                }
+            }
+        }
+
+
+        private async Task Client_Resumed(DiscordClient sender, ReadyEventArgs e)
+        {
+            Client.Ready += OnClientReady;
+
+            Commands.RegisterCommands<DiceCommands>();
+            Commands.RegisterCommands<RoleCommands>();
+
+            Commands.SetHelpFormatter<CustomHelpFormatter>();
+
+            Client.MessageReactionAdded += Client_MessageReactionAdded;
+            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
+            Client.Resumed += Client_Resumed;
+
+            await Client.ConnectAsync();
         }
 
         private Task OnClientReady(object sender, ReadyEventArgs e)
@@ -169,18 +242,6 @@ namespace DelVRBot
         //When the bot is restarted this Task is run so that the reaction role message still works.
         public async Task RoleReactionMessage()
         {
-            roleEmojis = new List<DiscordEmoji>();
-            discordRoles = new List<DiscordRole>();
-
-            for (int i = 0; i < emojiNames.Count; i++)
-            {
-                roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
-                discordRoles.Add(Guild.GetRole(roleIDs[i]));
-                Console.WriteLine(Guild);
-                Console.WriteLine(roleIDs[i]);
-                Console.WriteLine(discordRoles[i]);
-            }
-
             var interactivity = Client.GetInteractivity();
 
             Client.MessageReactionRemoved += Client_MessageReactionRemoved;
@@ -205,22 +266,6 @@ namespace DelVRBot
                             await reactedUser.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
                         }
                     }
-                }
-            }
-        }
-
-        private async Task Client_MessageReactionRemoved(DiscordClient sender, MessageReactionRemoveEventArgs e)
-        {
-            DiscordUser discordUser = await sender.GetUserAsync(e.User.Id);
-            DiscordMember discordMemeber = await e.Guild.GetMemberAsync(discordUser.Id);
-
-            for (int i = 0; i < roleEmojis.Count; i++)
-            {
-                string emojiName = e.Emoji.GetDiscordName();
-                if (emojiName == roleEmojis[i] && discordMemeber.Roles.Contains(discordRoles[i]))
-                {
-                    await discordMemeber.RevokeRoleAsync(discordRoles[i]).ConfigureAwait(false);
-                    return;
                 }
             }
         }
