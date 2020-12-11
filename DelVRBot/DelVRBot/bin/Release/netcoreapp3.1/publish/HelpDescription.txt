@@ -1,6 +1,0 @@
-This is a very early version of the DelVR discord bot. There will be more commands in the future to help set up your games and interact with the community easier!
-
-Use `!help [command]` to see how to use a command.
-
-**Dice**
-__**roll**__ - Roll is used to roll any combination of dice in the `XdY` format. (`1d6`, `2d8`, etc) In emote format.
