@@ -1,0 +1,37 @@
+{
+  "token": "NzgxMTQ2NTY2NjM4NDM2Mzcy.X75Zbg.4OFyPmSmPv699gFOyeT-92jlamU",
+  "prefix": "!",
+  "guild": 662081595758477312,
+  "reactionRolesChannel": 780748391457620001,
+  "reactionRolesMesage": 786744118843277312,
+  "discordEmojis": [
+    {
+      "emojis": [
+        [
+          {
+            "name": ":DungeonMaster:"
+          },
+          {
+            "name": ":LookingForGroup:"
+          }
+        ]
+      ]
+    }
+  ],
+  "discordRoles": [
+    {
+      "roles": [
+        [
+          {
+            "id": 664693406320164864,
+            "name": "Dungeon Master"
+          },
+          {
+            "id": 785984414156324874,
+            "name": "Looking for Group"
+          }
+        ]
+      ]
+    }
+  ]
+}
