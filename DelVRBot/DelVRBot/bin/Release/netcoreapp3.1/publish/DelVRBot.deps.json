@@ -9,13 +9,24 @@
     ".NETCoreApp,Version=v3.1/win-x64": {
       "DelVRBot/1.0.0": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-nightly-00760",
-          "DSharpPlus.CommandsNext": "4.0.0-nightly-00760",
-          "DSharpPlus.Interactivity": "4.0.0-nightly-00760",
-          "DSharpPlus.VoiceNext": "4.0.0-nightly-00760"
+          "DSharpPlus": "4.0.0-rc1",
+          "DSharpPlus.CommandsNext": "4.0.0-rc1",
+          "DSharpPlus.Interactivity": "4.0.0-rc1",
+          "DSharpPlus.VoiceNext": "4.0.0-rc1",
+          "TweetinviAPI": "5.0.3",
+          "TweetinviAPI.AspNetPlugin": "5.0.3",
+          "TweetinviAPI.WebhooksPlugin": "4.0.0"
         },
         "runtime": {
           "DelVRBot.dll": {}
+        }
+      },
+      "Autofac/4.9.4": {
+        "runtime": {
+          "lib/netstandard2.0/Autofac.dll": {
+            "assemblyVersion": "4.9.4.0",
+            "fileVersion": "4.9.4.0"
+          }
         }
       },
       "ConcurrentHashSet/1.1.0": {
@@ -26,7 +37,7 @@
           }
         }
       },
-      "DSharpPlus/4.0.0-nightly-00760": {
+      "DSharpPlus/4.0.0-rc1": {
         "dependencies": {
           "Emzi0767.Common": "2.2.2",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.8",
@@ -39,45 +50,45 @@
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.dll": {
-            "assemblyVersion": "4.0.0.760",
-            "fileVersion": "4.0.0.760"
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
-      "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
+      "DSharpPlus.CommandsNext/4.0.0-rc1": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-nightly-00760",
+          "DSharpPlus": "4.0.0-rc1",
           "Microsoft.Extensions.DependencyInjection": "3.1.7"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.CommandsNext.dll": {
-            "assemblyVersion": "4.0.0.760",
-            "fileVersion": "4.0.0.760"
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
-      "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
+      "DSharpPlus.Interactivity/4.0.0-rc1": {
         "dependencies": {
           "ConcurrentHashSet": "1.1.0",
-          "DSharpPlus": "4.0.0-nightly-00760"
+          "DSharpPlus": "4.0.0-rc1"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {
-            "assemblyVersion": "4.0.0.760",
-            "fileVersion": "4.0.0.760"
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
-      "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
+      "DSharpPlus.VoiceNext/4.0.0-rc1": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-nightly-00760",
+          "DSharpPlus": "4.0.0-rc1",
           "DSharpPlus.VoiceNext.Natives": "1.0.0",
           "System.Threading.Channels": "4.7.0"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.VoiceNext.dll": {
-            "assemblyVersion": "4.0.0.760",
-            "fileVersion": "4.0.0.760"
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
           }
         }
       },
@@ -590,6 +601,7 @@
           "runtime.any.System.Reflection.Primitives": "4.3.0"
         }
       },
+      "System.Reflection.TypeExtensions/4.5.1": {},
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
@@ -872,7 +884,72 @@
           "runtime.any.System.Threading.Timer": "4.3.0"
         }
       },
-      "System.ValueTuple/4.5.0": {}
+      "System.ValueTuple/4.5.0": {},
+      "TweetinviAPI/5.0.3": {
+        "dependencies": {
+          "Autofac": "4.9.4",
+          "Newtonsoft.Json": "12.0.3",
+          "System.Collections": "4.3.0",
+          "System.Net.Http": "4.3.4",
+          "System.Reflection.TypeExtensions": "4.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tweetinvi.Controllers.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.Core.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.Credentials.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.Logic.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.Security.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.Streams.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.WebLogic.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          },
+          "lib/netstandard2.0/Tweetinvi.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          }
+        }
+      },
+      "TweetinviAPI.AspNetPlugin/5.0.3": {
+        "dependencies": {
+          "TweetinviAPI": "5.0.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Tweetinvi.AspNet.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          }
+        }
+      },
+      "TweetinviAPI.WebhooksPlugin/4.0.0": {
+        "dependencies": {
+          "TweetinviAPI": "5.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tweetinvi.Webhooks.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -881,6 +958,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Autofac/4.9.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dYiDG4yoV7GDCoOc66d1sqMmg2gwDyomHKgATuMfhFzYxVpWEltToHVHXI3I9vOEvIXE55S4OZPY0ldiZmZtpA==",
+      "path": "autofac/4.9.4",
+      "hashPath": "autofac.4.9.4.nupkg.sha512"
+    },
     "ConcurrentHashSet/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -888,33 +972,33 @@
       "path": "concurrenthashset/1.1.0",
       "hashPath": "concurrenthashset.1.1.0.nupkg.sha512"
     },
-    "DSharpPlus/4.0.0-nightly-00760": {
+    "DSharpPlus/4.0.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mwt6FQ4OneWdWYVyHmfZCq+epQ4xIh7/qsZUCjRnLlPxYAyS3vaM0D6qEoWbpvuLso+JOXq0JxLoORzTqnWYxg==",
-      "path": "dsharpplus/4.0.0-nightly-00760",
-      "hashPath": "dsharpplus.4.0.0-nightly-00760.nupkg.sha512"
+      "sha512": "sha512-uuOdv1IjXbPXzTYXL0f/cDcXVTAXfLLAgU/Bxb2GgGGLKqikdV1oc9AlFxix4cNZlOcj96nEq4ndzECEyN6MLg==",
+      "path": "dsharpplus/4.0.0-rc1",
+      "hashPath": "dsharpplus.4.0.0-rc1.nupkg.sha512"
     },
-    "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
+    "DSharpPlus.CommandsNext/4.0.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lZ85OtxjGcss1S+YOnh71PA5yeFI6V9nLJuGTWwB4EkClIWE7opsgsncelGa92HtGRbN8X1/jW+ja3KPFlIHhQ==",
-      "path": "dsharpplus.commandsnext/4.0.0-nightly-00760",
-      "hashPath": "dsharpplus.commandsnext.4.0.0-nightly-00760.nupkg.sha512"
+      "sha512": "sha512-aK3H+WgoA9Gwvkzl9mul7Va+jijA8ajOZ6s8mBLW9iCGAJjVl7DUxI256AFAS1YvGRjeR7Ar61fwq6z7daZp0w==",
+      "path": "dsharpplus.commandsnext/4.0.0-rc1",
+      "hashPath": "dsharpplus.commandsnext.4.0.0-rc1.nupkg.sha512"
     },
-    "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
+    "DSharpPlus.Interactivity/4.0.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Kwz31MgnJw3Qh5FJkGvQLilun0RdMuWW/3BNnU3neaMts8h7g2BUEbaUSYSUTHeQjsM3Um1ZlDKPSjKpRLRGVw==",
-      "path": "dsharpplus.interactivity/4.0.0-nightly-00760",
-      "hashPath": "dsharpplus.interactivity.4.0.0-nightly-00760.nupkg.sha512"
+      "sha512": "sha512-jzWMdOjD3w7U2oiNlkgOwKXjZWFvnvS9wGkZRV6K5vIcOB5KzLQsPu1cAj9Pv5pwV7zcxocJvfbq/2psWcSi5g==",
+      "path": "dsharpplus.interactivity/4.0.0-rc1",
+      "hashPath": "dsharpplus.interactivity.4.0.0-rc1.nupkg.sha512"
     },
-    "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
+    "DSharpPlus.VoiceNext/4.0.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uR9hpRpaB0BMTpHoxTptULSMTUNOGeX2pI5sUBt+3dcUCHCoI8ZEPGza8C9C23lf2F3gpR1ezfFAL3ttrSnIlw==",
-      "path": "dsharpplus.voicenext/4.0.0-nightly-00760",
-      "hashPath": "dsharpplus.voicenext.4.0.0-nightly-00760.nupkg.sha512"
+      "sha512": "sha512-RxczqNfAeisf3sCzh4axStIaFw8VzXxv5Be98uTkV/vVOOMrmyvt+vbkrKsYbl+0pXjO1T+zSJ/cLuPJf7Y/OQ==",
+      "path": "dsharpplus.voicenext/4.0.0-rc1",
+      "hashPath": "dsharpplus.voicenext.4.0.0-rc1.nupkg.sha512"
     },
     "DSharpPlus.VoiceNext.Natives/1.0.0": {
       "type": "package",
@@ -1434,6 +1518,13 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
+    "System.Reflection.TypeExtensions/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fO8GMEkgoKioJ7cglZbhcnBgkCWWn9poS3G2jevS+fuwW9xJXMx7/1kr7dkwOJfo0pWqxLFWVcxlOr+WeK5ipA==",
+      "path": "system.reflection.typeextensions/4.5.1",
+      "hashPath": "system.reflection.typeextensions.4.5.1.nupkg.sha512"
+    },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1622,6 +1713,27 @@
       "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "TweetinviAPI/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Izgc5ddgbEo7DSxGDAwENX4hgulJJGNa64NVJ/5UBVCib4mNsavtLmk8hsnQZU4MXHAvrtZpeAIZc5bjEjLXw==",
+      "path": "tweetinviapi/5.0.3",
+      "hashPath": "tweetinviapi.5.0.3.nupkg.sha512"
+    },
+    "TweetinviAPI.AspNetPlugin/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YxlsdClaMZO86BELUtt0rDXaNfPSoXZtfY7S1JIbXjhGBLtvzyiZiU9eTAqA3B7K0FOcfYOeW3SnMqmyThwKQw==",
+      "path": "tweetinviapi.aspnetplugin/5.0.3",
+      "hashPath": "tweetinviapi.aspnetplugin.5.0.3.nupkg.sha512"
+    },
+    "TweetinviAPI.WebhooksPlugin/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UOtym5dBDNEaoZpnCFys+S8IqRq4KZ7NZs5yEZLig7nOpJhbH3U25JgBPIeLm20QdCrC+BfjDgujhgIryahUnA==",
+      "path": "tweetinviapi.webhooksplugin/4.0.0",
+      "hashPath": "tweetinviapi.webhooksplugin.4.0.0.nupkg.sha512"
     }
   }
 }

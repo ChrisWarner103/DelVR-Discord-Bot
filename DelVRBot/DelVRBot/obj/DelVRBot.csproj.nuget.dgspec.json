@@ -44,19 +44,31 @@
           "dependencies": {
             "DSharpPlus": {
               "target": "Package",
-              "version": "[4.0.0-nightly-00760, )"
+              "version": "[4.0.0-rc1, )"
             },
             "DSharpPlus.CommandsNext": {
               "target": "Package",
-              "version": "[4.0.0-nightly-00760, )"
+              "version": "[4.0.0-rc1, )"
             },
             "DSharpPlus.Interactivity": {
               "target": "Package",
-              "version": "[4.0.0-nightly-00760, )"
+              "version": "[4.0.0-rc1, )"
             },
             "DSharpPlus.VoiceNext": {
               "target": "Package",
-              "version": "[4.0.0-nightly-00760, )"
+              "version": "[4.0.0-rc1, )"
+            },
+            "TweetinviAPI": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "TweetinviAPI.AspNetPlugin": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "TweetinviAPI.WebhooksPlugin": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [

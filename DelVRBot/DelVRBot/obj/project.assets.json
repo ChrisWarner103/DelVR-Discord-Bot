@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Autofac/4.9.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Autofac.dll": {}
+        }
+      },
       "ConcurrentHashSet/1.1.0": {
         "type": "package",
         "compile": {
@@ -11,7 +20,7 @@
           "lib/netstandard2.0/ConcurrentCollections.dll": {}
         }
       },
-      "DSharpPlus/4.0.0-nightly-00760": {
+      "DSharpPlus/4.0.0-rc1": {
         "type": "package",
         "dependencies": {
           "Emzi0767.Common": "2.2.2",
@@ -30,10 +39,10 @@
           "lib/netstandard2.0/DSharpPlus.dll": {}
         }
       },
-      "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
+      "DSharpPlus.CommandsNext/4.0.0-rc1": {
         "type": "package",
         "dependencies": {
-          "DSharpPlus": "4.0.0-nightly-00760",
+          "DSharpPlus": "4.0.0-rc1",
           "Microsoft.Extensions.DependencyInjection": "3.1.7"
         },
         "compile": {
@@ -43,11 +52,11 @@
           "lib/netstandard2.0/DSharpPlus.CommandsNext.dll": {}
         }
       },
-      "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
+      "DSharpPlus.Interactivity/4.0.0-rc1": {
         "type": "package",
         "dependencies": {
           "ConcurrentHashSet": "1.1.0",
-          "DSharpPlus": "4.0.0-nightly-00760"
+          "DSharpPlus": "4.0.0-rc1"
         },
         "compile": {
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {}
@@ -56,10 +65,10 @@
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {}
         }
       },
-      "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
+      "DSharpPlus.VoiceNext/4.0.0-rc1": {
         "type": "package",
         "dependencies": {
-          "DSharpPlus": "4.0.0-nightly-00760",
+          "DSharpPlus": "4.0.0-rc1",
           "DSharpPlus.VoiceNext.Natives": "1.0.0",
           "System.Threading.Channels": "4.7.0"
         },
@@ -353,7 +362,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.dll": {}
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -793,6 +802,15 @@
         },
         "compile": {
           "ref/netstandard1.0/_._": {}
+        }
+      },
+      "System.Reflection.TypeExtensions/4.5.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -1273,10 +1291,84 @@
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
         }
+      },
+      "TweetinviAPI/5.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "4.9.4",
+          "Newtonsoft.Json": "12.0.3",
+          "System.Collections": "4.3.0",
+          "System.Net.Http": "4.3.4",
+          "System.Reflection.TypeExtensions": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Tweetinvi.Controllers.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Core.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Credentials.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Logic.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Security.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Streams.dll": {},
+          "lib/netstandard2.0/Tweetinvi.WebLogic.dll": {},
+          "lib/netstandard2.0/Tweetinvi.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tweetinvi.Controllers.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Core.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Credentials.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Logic.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Security.dll": {},
+          "lib/netstandard2.0/Tweetinvi.Streams.dll": {},
+          "lib/netstandard2.0/Tweetinvi.WebLogic.dll": {},
+          "lib/netstandard2.0/Tweetinvi.dll": {}
+        }
+      },
+      "TweetinviAPI.AspNetPlugin/5.0.3": {
+        "type": "package",
+        "dependencies": {
+          "TweetinviAPI": "5.0.3"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Tweetinvi.AspNet.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Tweetinvi.AspNet.dll": {}
+        }
+      },
+      "TweetinviAPI.WebhooksPlugin/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "TweetinviAPI": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Tweetinvi.Webhooks.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tweetinvi.Webhooks.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Autofac/4.9.4": {
+      "sha512": "dYiDG4yoV7GDCoOc66d1sqMmg2gwDyomHKgATuMfhFzYxVpWEltToHVHXI3I9vOEvIXE55S4OZPY0ldiZmZtpA==",
+      "type": "package",
+      "path": "autofac/4.9.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.4.9.4.nupkg.sha512",
+        "autofac.nuspec",
+        "lib/net45/Autofac.dll",
+        "lib/net45/Autofac.pdb",
+        "lib/net45/Autofac.xml",
+        "lib/netstandard1.1/Autofac.dll",
+        "lib/netstandard1.1/Autofac.pdb",
+        "lib/netstandard1.1/Autofac.xml",
+        "lib/netstandard2.0/Autofac.dll",
+        "lib/netstandard2.0/Autofac.pdb",
+        "lib/netstandard2.0/Autofac.xml"
+      ]
+    },
     "ConcurrentHashSet/1.1.0": {
       "sha512": "1SuuhZe0wUJbchXdjS23O+quojkw0IXqM9LtUp3RwgQreDI4cj1lfDbdHnD4fOYEnUrftzVIYoonvPlsXm30Bg==",
       "type": "package",
@@ -1294,49 +1386,53 @@
         "lib/netstandard2.0/ConcurrentCollections.xml"
       ]
     },
-    "DSharpPlus/4.0.0-nightly-00760": {
-      "sha512": "mwt6FQ4OneWdWYVyHmfZCq+epQ4xIh7/qsZUCjRnLlPxYAyS3vaM0D6qEoWbpvuLso+JOXq0JxLoORzTqnWYxg==",
+    "DSharpPlus/4.0.0-rc1": {
+      "sha512": "uuOdv1IjXbPXzTYXL0f/cDcXVTAXfLLAgU/Bxb2GgGGLKqikdV1oc9AlFxix4cNZlOcj96nEq4ndzECEyN6MLg==",
       "type": "package",
-      "path": "dsharpplus/4.0.0-nightly-00760",
+      "path": "dsharpplus/4.0.0-rc1",
       "files": [
         ".nupkg.metadata",
-        "dsharpplus.4.0.0-nightly-00760.nupkg.sha512",
+        ".signature.p7s",
+        "dsharpplus.4.0.0-rc1.nupkg.sha512",
         "dsharpplus.nuspec",
         "lib/netstandard2.0/DSharpPlus.dll",
         "lib/netstandard2.0/DSharpPlus.xml"
       ]
     },
-    "DSharpPlus.CommandsNext/4.0.0-nightly-00760": {
-      "sha512": "lZ85OtxjGcss1S+YOnh71PA5yeFI6V9nLJuGTWwB4EkClIWE7opsgsncelGa92HtGRbN8X1/jW+ja3KPFlIHhQ==",
+    "DSharpPlus.CommandsNext/4.0.0-rc1": {
+      "sha512": "aK3H+WgoA9Gwvkzl9mul7Va+jijA8ajOZ6s8mBLW9iCGAJjVl7DUxI256AFAS1YvGRjeR7Ar61fwq6z7daZp0w==",
       "type": "package",
-      "path": "dsharpplus.commandsnext/4.0.0-nightly-00760",
+      "path": "dsharpplus.commandsnext/4.0.0-rc1",
       "files": [
         ".nupkg.metadata",
-        "dsharpplus.commandsnext.4.0.0-nightly-00760.nupkg.sha512",
+        ".signature.p7s",
+        "dsharpplus.commandsnext.4.0.0-rc1.nupkg.sha512",
         "dsharpplus.commandsnext.nuspec",
         "lib/netstandard2.0/DSharpPlus.CommandsNext.dll",
         "lib/netstandard2.0/DSharpPlus.CommandsNext.xml"
       ]
     },
-    "DSharpPlus.Interactivity/4.0.0-nightly-00760": {
-      "sha512": "Kwz31MgnJw3Qh5FJkGvQLilun0RdMuWW/3BNnU3neaMts8h7g2BUEbaUSYSUTHeQjsM3Um1ZlDKPSjKpRLRGVw==",
+    "DSharpPlus.Interactivity/4.0.0-rc1": {
+      "sha512": "jzWMdOjD3w7U2oiNlkgOwKXjZWFvnvS9wGkZRV6K5vIcOB5KzLQsPu1cAj9Pv5pwV7zcxocJvfbq/2psWcSi5g==",
       "type": "package",
-      "path": "dsharpplus.interactivity/4.0.0-nightly-00760",
+      "path": "dsharpplus.interactivity/4.0.0-rc1",
       "files": [
         ".nupkg.metadata",
-        "dsharpplus.interactivity.4.0.0-nightly-00760.nupkg.sha512",
+        ".signature.p7s",
+        "dsharpplus.interactivity.4.0.0-rc1.nupkg.sha512",
         "dsharpplus.interactivity.nuspec",
         "lib/netstandard2.0/DSharpPlus.Interactivity.dll",
         "lib/netstandard2.0/DSharpPlus.Interactivity.xml"
       ]
     },
-    "DSharpPlus.VoiceNext/4.0.0-nightly-00760": {
-      "sha512": "uR9hpRpaB0BMTpHoxTptULSMTUNOGeX2pI5sUBt+3dcUCHCoI8ZEPGza8C9C23lf2F3gpR1ezfFAL3ttrSnIlw==",
+    "DSharpPlus.VoiceNext/4.0.0-rc1": {
+      "sha512": "RxczqNfAeisf3sCzh4axStIaFw8VzXxv5Be98uTkV/vVOOMrmyvt+vbkrKsYbl+0pXjO1T+zSJ/cLuPJf7Y/OQ==",
       "type": "package",
-      "path": "dsharpplus.voicenext/4.0.0-nightly-00760",
+      "path": "dsharpplus.voicenext/4.0.0-rc1",
       "files": [
         ".nupkg.metadata",
-        "dsharpplus.voicenext.4.0.0-nightly-00760.nupkg.sha512",
+        ".signature.p7s",
+        "dsharpplus.voicenext.4.0.0-rc1.nupkg.sha512",
         "dsharpplus.voicenext.nuspec",
         "lib/netstandard2.0/DSharpPlus.VoiceNext.dll",
         "lib/netstandard2.0/DSharpPlus.VoiceNext.xml"
@@ -3007,6 +3103,73 @@
         "system.reflection.primitives.nuspec"
       ]
     },
+    "System.Reflection.TypeExtensions/4.5.1": {
+      "sha512": "fO8GMEkgoKioJ7cglZbhcnBgkCWWn9poS3G2jevS+fuwW9xJXMx7/1kr7dkwOJfo0pWqxLFWVcxlOr+WeK5ipA==",
+      "type": "package",
+      "path": "system.reflection.typeextensions/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Reflection.TypeExtensions.dll",
+        "lib/net461/System.Reflection.TypeExtensions.dll",
+        "lib/netcore50/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp1.0/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/System.Reflection.TypeExtensions.dll",
+        "lib/netstandard1.5/System.Reflection.TypeExtensions.dll",
+        "lib/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.3/System.Reflection.TypeExtensions.dll",
+        "ref/netstandard1.3/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/de/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/es/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/fr/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/it/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/ja/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/ko/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/ru/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/zh-hans/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.3/zh-hant/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/System.Reflection.TypeExtensions.dll",
+        "ref/netstandard1.5/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/de/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/es/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/fr/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/it/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/ja/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/ko/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/ru/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/zh-hans/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard1.5/zh-hant/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll",
+        "runtimes/aot/lib/uap10.0.16299/_._",
+        "system.reflection.typeextensions.4.5.1.nupkg.sha512",
+        "system.reflection.typeextensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Resources.ResourceManager/4.3.0": {
       "sha512": "/zrcPkkWdZmI4F92gL/TPumP98AVDu/Wxr3CSJGQQ+XN6wbRZcyfSKVoPo17ilb3iOr0cCRqJInGwNMolqhS8A==",
       "type": "package",
@@ -4272,14 +4435,90 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "TweetinviAPI/5.0.3": {
+      "sha512": "/Izgc5ddgbEo7DSxGDAwENX4hgulJJGNa64NVJ/5UBVCib4mNsavtLmk8hsnQZU4MXHAvrtZpeAIZc5bjEjLXw==",
+      "type": "package",
+      "path": "tweetinviapi/5.0.3",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.4/Tweetinvi.Controllers.dll",
+        "lib/netstandard1.4/Tweetinvi.Controllers.xml",
+        "lib/netstandard1.4/Tweetinvi.Core.dll",
+        "lib/netstandard1.4/Tweetinvi.Core.xml",
+        "lib/netstandard1.4/Tweetinvi.Credentials.dll",
+        "lib/netstandard1.4/Tweetinvi.Credentials.xml",
+        "lib/netstandard1.4/Tweetinvi.Logic.dll",
+        "lib/netstandard1.4/Tweetinvi.Logic.xml",
+        "lib/netstandard1.4/Tweetinvi.Security.dll",
+        "lib/netstandard1.4/Tweetinvi.Streams.dll",
+        "lib/netstandard1.4/Tweetinvi.Streams.xml",
+        "lib/netstandard1.4/Tweetinvi.WebLogic.dll",
+        "lib/netstandard1.4/Tweetinvi.WebLogic.xml",
+        "lib/netstandard1.4/Tweetinvi.dll",
+        "lib/netstandard1.4/Tweetinvi.xml",
+        "lib/netstandard2.0/Tweetinvi.Controllers.dll",
+        "lib/netstandard2.0/Tweetinvi.Controllers.xml",
+        "lib/netstandard2.0/Tweetinvi.Core.dll",
+        "lib/netstandard2.0/Tweetinvi.Core.xml",
+        "lib/netstandard2.0/Tweetinvi.Credentials.dll",
+        "lib/netstandard2.0/Tweetinvi.Credentials.xml",
+        "lib/netstandard2.0/Tweetinvi.Logic.dll",
+        "lib/netstandard2.0/Tweetinvi.Logic.xml",
+        "lib/netstandard2.0/Tweetinvi.Security.dll",
+        "lib/netstandard2.0/Tweetinvi.Streams.dll",
+        "lib/netstandard2.0/Tweetinvi.Streams.xml",
+        "lib/netstandard2.0/Tweetinvi.WebLogic.dll",
+        "lib/netstandard2.0/Tweetinvi.WebLogic.xml",
+        "lib/netstandard2.0/Tweetinvi.dll",
+        "lib/netstandard2.0/Tweetinvi.xml",
+        "tools/install.ps1",
+        "tweetinviapi.5.0.3.nupkg.sha512",
+        "tweetinviapi.nuspec"
+      ]
+    },
+    "TweetinviAPI.AspNetPlugin/5.0.3": {
+      "sha512": "YxlsdClaMZO86BELUtt0rDXaNfPSoXZtfY7S1JIbXjhGBLtvzyiZiU9eTAqA3B7K0FOcfYOeW3SnMqmyThwKQw==",
+      "type": "package",
+      "path": "tweetinviapi.aspnetplugin/5.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp2.1/Tweetinvi.AspNet.dll",
+        "lib/netcoreapp2.1/Tweetinvi.AspNet.xml",
+        "lib/netcoreapp3.1/Tweetinvi.AspNet.dll",
+        "lib/netcoreapp3.1/Tweetinvi.AspNet.xml",
+        "lib/netstandard2.0/Tweetinvi.AspNet.dll",
+        "lib/netstandard2.0/Tweetinvi.AspNet.xml",
+        "tweetinviapi.aspnetplugin.5.0.3.nupkg.sha512",
+        "tweetinviapi.aspnetplugin.nuspec"
+      ]
+    },
+    "TweetinviAPI.WebhooksPlugin/4.0.0": {
+      "sha512": "UOtym5dBDNEaoZpnCFys+S8IqRq4KZ7NZs5yEZLig7nOpJhbH3U25JgBPIeLm20QdCrC+BfjDgujhgIryahUnA==",
+      "type": "package",
+      "path": "tweetinviapi.webhooksplugin/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Tweetinvi.Webhooks.dll",
+        "lib/netstandard2.0/Tweetinvi.Webhooks.dll",
+        "tweetinviapi.webhooksplugin.4.0.0.nupkg.sha512",
+        "tweetinviapi.webhooksplugin.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DSharpPlus >= 4.0.0-nightly-00760",
-      "DSharpPlus.CommandsNext >= 4.0.0-nightly-00760",
-      "DSharpPlus.Interactivity >= 4.0.0-nightly-00760",
-      "DSharpPlus.VoiceNext >= 4.0.0-nightly-00760"
+      "DSharpPlus >= 4.0.0-rc1",
+      "DSharpPlus.CommandsNext >= 4.0.0-rc1",
+      "DSharpPlus.Interactivity >= 4.0.0-rc1",
+      "DSharpPlus.VoiceNext >= 4.0.0-rc1",
+      "TweetinviAPI >= 5.0.3",
+      "TweetinviAPI.AspNetPlugin >= 5.0.3",
+      "TweetinviAPI.WebhooksPlugin >= 4.0.0"
     ]
   },
   "packageFolders": {
@@ -4326,19 +4565,31 @@
         "dependencies": {
           "DSharpPlus": {
             "target": "Package",
-            "version": "[4.0.0-nightly-00760, )"
+            "version": "[4.0.0-rc1, )"
           },
           "DSharpPlus.CommandsNext": {
             "target": "Package",
-            "version": "[4.0.0-nightly-00760, )"
+            "version": "[4.0.0-rc1, )"
           },
           "DSharpPlus.Interactivity": {
             "target": "Package",
-            "version": "[4.0.0-nightly-00760, )"
+            "version": "[4.0.0-rc1, )"
           },
           "DSharpPlus.VoiceNext": {
             "target": "Package",
-            "version": "[4.0.0-nightly-00760, )"
+            "version": "[4.0.0-rc1, )"
+          },
+          "TweetinviAPI": {
+            "target": "Package",
+            "version": "[5.0.3, )"
+          },
+          "TweetinviAPI.AspNetPlugin": {
+            "target": "Package",
+            "version": "[5.0.3, )"
+          },
+          "TweetinviAPI.WebhooksPlugin": {
+            "target": "Package",
+            "version": "[4.0.0, )"
           }
         },
         "imports": [

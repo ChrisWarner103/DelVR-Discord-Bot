@@ -8,7 +8,6 @@ using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Converters;
 using DSharpPlus.CommandsNext.Entities;
 using DSharpPlus.Entities;
-using static DSharpPlus.Entities.DiscordEmbedBuilder;
 
 namespace DelVRBot
 {
@@ -19,13 +18,11 @@ namespace DelVRBot
         private StringBuilder MessageBuilder { get; }
 
         private string EmbedTitle;
-        private EmbedThumbnail EmbedImage;
         private string helpDescription;
 
         public CustomHelpFormatter(CommandContext ctx) : base(ctx)
         {
             this.MessageBuilder = new StringBuilder();
-            this.EmbedImage = new EmbedThumbnail();
         }
 
         // this method is called first, it sets the command
@@ -53,11 +50,11 @@ namespace DelVRBot
         {
             //subcommands = subcommands.Where(c => c.Name != "help").ToList();
 
-            //var list = subcommands.Select(g => g.CustomAttributes.OfType<CustomGroupAttribute>()).ToList();
+            //var list = subcommands.Select(g => g.CustomAttributes.ty).ToList();
 
             //for (int i = 0; i < list.Count; i++)
             //{
-            //    var string1 = list[i].Select(n => n.GroupName);
+            //    list[i].
             //}
 
             //var yes = subcommands.Select(g => g.CustomAttributes.Where(t => t.TypeId)).ToList();

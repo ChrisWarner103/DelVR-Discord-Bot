@@ -13,7 +13,7 @@ namespace DelVRBot.Commands
     public class DiceCommands : BaseCommandModule
     {
 
-        //[CustomGroup("Dice")]
+        [CustomGroup("Dice")]
         [Command("roll"), Aliases("r")]
         [Description("Roll is used to roll any combination of dice in the `XdY` format. (1d6, 2d8, etc)\nIn emote format.")]
         public async Task RollDice(CommandContext ctx, [RemainingText] string command)
@@ -24,7 +24,7 @@ namespace DelVRBot.Commands
             int diceRoll = 0;
             List<int> diceRolls = new List<int>();
             List<string> diceRollEmotes = new List<string>();
-            int diceRolledTotal = 0;
+            float diceRolledTotal = 0;
             var random = new Random();
             string eachRoll = string.Empty;
             string modifierString = string.Empty;
@@ -34,6 +34,15 @@ namespace DelVRBot.Commands
             char dice = 'd';
             char plusModifier = '+';
             char minusModifier = '-';
+            char divideModifier = '/';
+            char multiplyModifier = '*';
+            string adv = "adv";
+            string disadv = "dis";
+
+            if (command == null)
+            {
+                command = "1d20";
+            }
 
             command = command.ToLower();
 
@@ -43,6 +52,10 @@ namespace DelVRBot.Commands
 
             int plusModIndex = Array.IndexOf(commandArray, plusModifier);
             int minusModIndex = Array.IndexOf(commandArray, minusModifier);
+            int divideModIndex = Array.IndexOf(commandArray, divideModifier);
+            int multiplyModIndex = Array.IndexOf(commandArray, multiplyModifier);
+            bool advRoll = command.Contains(adv);
+            bool disadvRoll = command.Contains(disadv);
 
             if (plusModIndex != -1)
             {
@@ -62,8 +75,37 @@ namespace DelVRBot.Commands
                 }
                 modifier = Convert.ToInt32(new string(modifierString));
             }
+            else if (divideModIndex != -1)
+            {
+                for (int i = divideModIndex; i < commandArray.Length; i++)
+                {
+                    modifierString += string.Join("", commandArray[i]);
+                    command = command.Remove(divideModIndex, 1);
+                }
+                modifierString = modifierString.Remove(0, 1);
+                modifier = Convert.ToInt32(new string(modifierString));
+            }
+            else if (multiplyModIndex != -1)
+            {
+                for (int i = multiplyModIndex; i < commandArray.Length; i++)
+                {
+                    modifierString += string.Join("", commandArray[i]);
+                    command = command.Remove(multiplyModIndex, 1);
+                }
+                modifierString = modifierString.Remove(0, 1);
+                modifier = Convert.ToInt32(new string(modifierString));
+            }
 
-            
+            if (disadvRoll)
+            {
+
+            }
+            else if (advRoll)
+            {
+
+            }
+
+
 
             if (index != -1)
             {
@@ -81,9 +123,10 @@ namespace DelVRBot.Commands
             diceType = Convert.ToInt32(command);
 
             if (diceType == 0)
+            {
                 await ctx.Channel.SendMessageAsync("Dice type entered isn't a dice").ConfigureAwait(false);
-
-            if(diceType == 4)
+            }
+            else if (diceType == 4)
             {
                 for (int i = 0; i < diceAmount; i++)
                 {
@@ -109,15 +152,29 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
+
                         diceRolledTotal += diceRoll;
                     }
                 }
             }
-            else if(diceType == 6)
+            else if (diceType == 6)
             {
                 for (int i = 0; i < diceAmount; i++)
                 {
@@ -149,7 +206,20 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
@@ -196,15 +266,29 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
+
                         diceRolledTotal += diceRoll;
                     }
                 }
             }
-            else if(diceType == 10)
+            else if (diceType == 10)
             {
                 for (int i = 0; i < diceAmount; i++)
                 {
@@ -248,15 +332,29 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
+
                         diceRolledTotal += diceRoll;
                     }
                 }
             }
-            else if(diceType == 12)
+            else if (diceType == 12)
             {
                 for (int i = 0; i < diceAmount; i++)
                 {
@@ -306,15 +404,29 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
+
                         diceRolledTotal += diceRoll;
                     }
                 }
             }
-            else if(diceType == 20)
+            else if (diceType == 20)
             {
                 for (int i = 0; i < diceAmount; i++)
                 {
@@ -388,7 +500,20 @@ namespace DelVRBot.Commands
 
                     if (i == diceAmount - 1)
                     {
-                        diceRolledTotal += diceRoll + modifier;
+                        if (divideModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal / modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else if (multiplyModIndex != -1)
+                        {
+                            diceRolledTotal += diceRoll;
+                            diceRolledTotal = diceRolledTotal * modifier;
+                            diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                        }
+                        else
+                            diceRolledTotal += diceRoll + modifier;
                     }
                     else
                     {
@@ -431,17 +556,29 @@ namespace DelVRBot.Commands
                 await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
                                                     "\n" + "**Total** : " + diceRolledTotal.ToString()).ConfigureAwait(true);
             }
+            else if (divideModIndex != -1)
+            {
+                await ctx.Channel.SendMessageAsync(eachRoll).ConfigureAwait(false);
+                int rollTotal = diceRolls.GetRange(0, diceAmount).Sum();
+                await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
+                                                    "\n" + "**Total** : " + rollTotal.ToString() + "/" + modifierString.ToString() + " = " + diceRolledTotal.ToString()).ConfigureAwait(true);
+            }
+            else if (multiplyModIndex != -1)
+            {
+                await ctx.Channel.SendMessageAsync(eachRoll).ConfigureAwait(false);
+                int rollTotal = diceRolls.GetRange(0, diceAmount).Sum();
+                await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
+                                                    "\n" + "**Total** : " + rollTotal.ToString() + "*" + modifierString.ToString() + " = " + diceRolledTotal.ToString()).ConfigureAwait(true);
+            }
             else
             {
                 await ctx.Channel.SendMessageAsync(eachRoll).ConfigureAwait(false);
                 int rollTotal = diceRolls.GetRange(0, diceAmount).Sum();
                 await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
-                                                    "\n" + "**Total** : " + rollTotal.ToString() + modifierString.ToString() + " = "+ diceRolledTotal.ToString()).ConfigureAwait(true);
-
-
+                                                    "\n" + "**Total** : " + rollTotal.ToString() + modifierString.ToString() + " = " + diceRolledTotal.ToString()).ConfigureAwait(true);
             }
 
-            
+
         }
 
         [Command("rollt"), Aliases("rt")]
@@ -454,7 +591,7 @@ namespace DelVRBot.Commands
             int diceRoll = 0;
             List<int> diceRolls = new List<int>();
             List<string> diceRollEmotes = new List<string>();
-            int diceRolledTotal = 0;
+            float diceRolledTotal = 0;
             var random = new Random();
             string eachRoll = string.Empty;
             string modifierString = string.Empty;
@@ -464,6 +601,15 @@ namespace DelVRBot.Commands
             char dice = 'd';
             char plusModifier = '+';
             char minusModifier = '-';
+            char divideModifier = '/';
+            char multiplyModifier = '*';
+            string adv = "adv";
+            string disadv = "dis";
+
+            if (command == null)
+            {
+                command = "1d20";
+            }
 
             command = command.ToLower();
 
@@ -473,6 +619,10 @@ namespace DelVRBot.Commands
 
             int plusModIndex = Array.IndexOf(commandArray, plusModifier);
             int minusModIndex = Array.IndexOf(commandArray, minusModifier);
+            int divideModIndex = Array.IndexOf(commandArray, divideModifier);
+            int multiplyModIndex = Array.IndexOf(commandArray, multiplyModifier);
+            bool advRoll = command.Contains(adv);
+            bool disadvRoll = command.Contains(disadv);
 
             if (plusModIndex != -1)
             {
@@ -490,6 +640,26 @@ namespace DelVRBot.Commands
                     modifierString += string.Join("", commandArray[i]);
                     command = command.Remove(minusModIndex, 1);
                 }
+                modifier = Convert.ToInt32(new string(modifierString));
+            }
+            else if (divideModIndex != -1)
+            {
+                for (int i = divideModIndex; i < commandArray.Length; i++)
+                {
+                    modifierString += string.Join("", commandArray[i]);
+                    command = command.Remove(divideModIndex, 1);
+                }
+                modifierString = modifierString.Remove(0, 1);
+                modifier = Convert.ToInt32(new string(modifierString));
+            }
+            else if (multiplyModIndex != -1)
+            {
+                for (int i = multiplyModIndex; i < commandArray.Length; i++)
+                {
+                    modifierString += string.Join("", commandArray[i]);
+                    command = command.Remove(multiplyModIndex, 1);
+                }
+                modifierString = modifierString.Remove(0, 1);
                 modifier = Convert.ToInt32(new string(modifierString));
             }
 
@@ -513,21 +683,35 @@ namespace DelVRBot.Commands
             if (diceType == 0)
                 await ctx.Channel.SendMessageAsync("Dice type entered isn't a dice").ConfigureAwait(false);
 
-                for (int i = 0; i < diceAmount; i++)
+            for (int i = 0; i < diceAmount; i++)
+            {
+                diceRoll = random.Next(1, diceType + 1);
+
+                diceRolls.Add(diceRoll);
+
+                if (i == diceAmount - 1)
                 {
-                    diceRoll = random.Next(1, diceType + 1);
-
-                    diceRolls.Add(diceRoll);
-
-                    if (i == diceAmount - 1)
-                    {
-                        diceRolledTotal += diceRoll + modifier;
-                    }
-                    else
+                    if (divideModIndex != -1)
                     {
                         diceRolledTotal += diceRoll;
+                        diceRolledTotal = diceRolledTotal / modifier;
+                        diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
                     }
+                    else if (multiplyModIndex != -1)
+                    {
+                        diceRolledTotal += diceRoll;
+                        diceRolledTotal = diceRolledTotal * modifier;
+                        diceRolledTotal = Convert.ToInt32(Math.Floor(diceRolledTotal));
+                    }
+                    else
+                        diceRolledTotal += diceRoll + modifier;
                 }
+                else
+                {
+                    diceRolledTotal += diceRoll;
+                }
+
+            }
 
 
             eachRoll = string.Join(" ", diceRolls.ToArray());
@@ -536,6 +720,16 @@ namespace DelVRBot.Commands
             {
                 await ctx.Channel.SendMessageAsync(eachRoll).ConfigureAwait(false);
                 await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
+                                                    "\n" + "**Total** : " + diceRolledTotal.ToString()).ConfigureAwait(true);
+            }
+            else if (divideModIndex != -1)
+            {
+                await ctx.Channel.SendMessageAsync("(" + eachRoll + ")" + $"/{modifierString}" + "\n**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
+                                                   "\n" + "**Total** : " + diceRolledTotal.ToString()).ConfigureAwait(true);
+            }
+            else if (multiplyModIndex != -1)
+            {
+                await ctx.Channel.SendMessageAsync("(" + eachRoll + ")" + $"*{modifierString}" + "\n**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
                                                     "\n" + "**Total** : " + diceRolledTotal.ToString()).ConfigureAwait(true);
             }
             else

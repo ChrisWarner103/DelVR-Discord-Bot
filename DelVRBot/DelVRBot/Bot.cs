@@ -16,6 +16,8 @@ using DSharpPlus.CommandsNext.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Tweetinvi;
+using DSharpPlus.CommandsNext.Exceptions;
 
 namespace DelVRBot
 {
@@ -43,6 +45,8 @@ namespace DelVRBot
 
         public static string json { get; set; }
 
+        public readonly EventId BotEventId = new EventId(42, "Bot-Ex02");
+
 
         public async Task RunAsyn()
         {
@@ -61,12 +65,11 @@ namespace DelVRBot
                 AutoReconnect = true,
                 MinimumLogLevel = LogLevel.Debug,
                 Intents = DiscordIntents.All,
+                
             };
 
             Client = new DiscordClient(config);
-            //if (Program.DebugMode)
-            //    Guild = await Client.GetGuildAsync(695835309270761472, true).ConfigureAwait(false);
-            //else
+
             Guild = await Client.GetGuildAsync(configJson.Guild, true).ConfigureAwait(false);
 
             Client.Ready += OnClientReady;
@@ -84,6 +87,75 @@ namespace DelVRBot
                 DmHelp = true,
             };
 
+            LoadReactionEmojisFromConfig();
+
+            Commands = Client.UseCommandsNext(commandConfig);
+
+            Commands.CommandExecuted += Commands_CommandExecuted;
+            Commands.CommandErrored += Commands_CommandErrored;
+
+            Client.MessageReactionAdded += Client_MessageReactionAdded;
+            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
+            Client.Resumed += Client_Resumed;
+
+            Commands.SetHelpFormatter<CustomHelpFormatter>();
+
+            Commands.RegisterCommands<DiceCommands>();
+            Commands.RegisterCommands<RoleCommands>();
+
+            await Client.ConnectAsync();
+
+            Voice = Client.UseVoiceNext();
+
+            DiscordChannel roleReactChannel;
+
+            //This is only called when there are values inside the config file. Otherwise it is ignored
+            if (configJson.ReactionChannel != 0)
+            {
+                roleReactChannel = await Client.GetChannelAsync(configJson.ReactionChannel).ConfigureAwait(false);
+
+                if (configJson.ReactionMessage != 0)
+                {
+                    reactionMessage = await roleReactChannel.GetMessageAsync(configJson.ReactionMessage).ConfigureAwait(false);
+                }
+            }
+            //Anything added to this function needs to be before this
+            await Task.Delay(-1);
+        }
+
+        private async Task Commands_CommandErrored(CommandsNextExtension sender, CommandErrorEventArgs e)
+        {
+            // let's log the error details
+            e.Context.Client.Logger.LogError(BotEventId, $"{e.Context.User.Username} tried executing '{e.Command?.QualifiedName ?? "<unknown command>"}' but it errored: {e.Exception.GetType()}: {e.Exception.Message ?? "<no message>"}", DateTime.Now);
+
+            // let's check if the error is a result of lack
+            // of required permissions
+            if (e.Exception is ChecksFailedException ex)
+            {
+                // yes, the user lacks required permissions, 
+                // let them know
+
+                var emoji = DiscordEmoji.FromName(e.Context.Client, ":no_entry:");
+
+                // let's wrap the response into an embed
+                var embed = new DiscordEmbedBuilder
+                {
+                    Title = "Access denied",
+                    Description = $"{emoji} You do not have the permissions required to execute this command.",
+                    Color = new DiscordColor(0xFF0000) // red
+                };
+                await e.Context.RespondAsync("", embed: embed);
+            }
+        }
+
+        private Task Commands_CommandExecuted(CommandsNextExtension sender, CommandExecutionEventArgs e)
+        {
+            e.Context.Client.Logger.LogInformation(BotEventId, $"{e.Context.User.Username} used the command '{e.Command}'", DateTime.Now);
+            return Task.CompletedTask;
+        }
+
+        private void LoadReactionEmojisFromConfig()
+        {
             var result = JObject.Parse(json);
             var discordEmojis = result["discordEmojis"].Children();
             var discordRoles = result["discordRoles"].Children();
@@ -123,46 +195,6 @@ namespace DelVRBot
 
                 }
             }
-
-            Commands = Client.UseCommandsNext(commandConfig);
-
-            Commands.RegisterCommands<DiceCommands>();
-            Commands.RegisterCommands<RoleCommands>();
-
-            Commands.SetHelpFormatter<CustomHelpFormatter>();
-
-            Client.MessageReactionAdded += Client_MessageReactionAdded;
-            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
-            Client.Resumed += Client_Resumed;
-
-            await Client.ConnectAsync();
-
-            Voice = Client.UseVoiceNext();
-
-            DiscordChannel roleReactChannel;
-
-            //if (Program.DebugMode)
-            //{
-            //    roleReactChannel = await Client.GetChannelAsync(782812708990877736).ConfigureAwait(false);
-            //    reactionMessage = await roleReactChannel.GetMessageAsync(782812845539852298).ConfigureAwait(false);
-            //}
-
-            //This is only called when there are values inside the config file. Otherwise it is ignored
-            if (configJson.ReactionChannel != 0)
-            {
-                roleReactChannel = await Client.GetChannelAsync(configJson.ReactionChannel).ConfigureAwait(false);
-
-                if (configJson.ReactionMessage != 0)
-                {
-                    reactionMessage = await roleReactChannel.GetMessageAsync(configJson.ReactionMessage).ConfigureAwait(false);
-                }
-            }
-
-            //await RoleReactionMessage().ConfigureAwait(false);
-
-
-            //Anything added to this function needs to be before this
-            await Task.Delay(-1);
         }
 
         private async Task Client_MessageReactionRemoved(DiscordClient sender, MessageReactionRemoveEventArgs e)
@@ -217,7 +249,6 @@ namespace DelVRBot
             }
         }
 
-
         private async Task Client_Resumed(DiscordClient sender, ReadyEventArgs e)
         {
             Client.Ready += OnClientReady;
@@ -237,37 +268,6 @@ namespace DelVRBot
         private Task OnClientReady(object sender, ReadyEventArgs e)
         {
             return Task.CompletedTask;
-        }
-
-        //When the bot is restarted this Task is run so that the reaction role message still works.
-        public async Task RoleReactionMessage()
-        {
-            var interactivity = Client.GetInteractivity();
-
-            Client.MessageReactionRemoved += Client_MessageReactionRemoved;
-
-            while (true)
-            {
-                var reactionResults = await interactivity.WaitForReactionAsync(
-                    x => x.Message == reactionMessage).ConfigureAwait(false);
-
-                if (reactionResults.Result != null)
-                {
-                    for (int i = 0; i < roleEmojis.Count; i++)
-                    {
-
-                        string emojiName = reactionResults.Result.Emoji.GetDiscordName();
-
-                        if (emojiName == roleEmojis[i])
-                        {
-                            DiscordMember reactedUser = (DiscordMember)reactionResults.Result.User;
-                            Console.WriteLine(discordRoles[i]);
-
-                            await reactedUser.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
-                        }
-                    }
-                }
-            }
         }
     }
 }

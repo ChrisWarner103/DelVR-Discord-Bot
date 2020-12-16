@@ -79,3 +79,14 @@ C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Rele
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.csproj.CopyComplete
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.dll
 C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Release\netcoreapp3.1\DelVRBot.pdb
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Autofac.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Controllers.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Core.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Credentials.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Logic.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Security.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Streams.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.WebLogic.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.AspNet.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Release\netcoreapp3.1\Tweetinvi.Webhooks.dll
