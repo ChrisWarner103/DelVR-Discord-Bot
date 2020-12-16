@@ -6,5 +6,10 @@ __*Example Commands*__
 `!r` or `!r 1d20` - Rolls a D20.
 `!r 1d20+5` - Rolling for a skill check/attack roll.
 
+`!r 1d20+6 adv` - A skill check or attack roll with Advantage
+`!r 1d20-2 dis` - A skill check or attack roll with Disadvantage
+
+`!r adv`/`!r dis` - Makes a straight Advantage/Disadvantage roll.
+
 __**Additional Commands**__
 You can also roll using `!rt` or `!rollt` to roll without showing the dice emojis.

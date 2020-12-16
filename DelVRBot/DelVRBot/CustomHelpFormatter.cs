@@ -19,10 +19,12 @@ namespace DelVRBot
 
         private string EmbedTitle;
         private string helpDescription;
+        private CommandContext commandCtx;
 
         public CustomHelpFormatter(CommandContext ctx) : base(ctx)
         {
             this.MessageBuilder = new StringBuilder();
+            commandCtx = ctx;
         }
 
         // this method is called first, it sets the command
@@ -89,7 +91,10 @@ namespace DelVRBot
                 Color = DiscordColor.Orange,
                 Description = this.MessageBuilder.ToString(),
             };
+            commandCtx.Channel.DeleteMessageAsync(commandCtx.Message);
+
             return new CommandHelpMessage(embed: helpEmbed);
+            
         }
     }
 }

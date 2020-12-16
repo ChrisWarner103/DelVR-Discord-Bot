@@ -96,6 +96,7 @@ namespace DelVRBot
 
             Client.MessageReactionAdded += Client_MessageReactionAdded;
             Client.MessageReactionRemoved += Client_MessageReactionRemoved;
+            Client.GuildMemberAdded += Client_GuildMemeberJoined;
             Client.Resumed += Client_Resumed;
 
             Commands.SetHelpFormatter<CustomHelpFormatter>();
@@ -121,6 +122,14 @@ namespace DelVRBot
             }
             //Anything added to this function needs to be before this
             await Task.Delay(-1);
+        }
+
+        //This is called when a user joins the discord sever
+        private async Task Client_GuildMemeberJoined(DiscordClient sender, GuildMemberAddEventArgs e)
+        {
+            ulong DelverRole = 664986265438912512;
+            var defaultRole = Guild.GetRole(DelverRole);
+            await e.Member.GrantRoleAsync(defaultRole, "Joined the server!");
         }
 
         private async Task Commands_CommandErrored(CommandsNextExtension sender, CommandErrorEventArgs e)
