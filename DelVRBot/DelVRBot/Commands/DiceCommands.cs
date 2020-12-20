@@ -692,7 +692,7 @@ namespace DelVRBot.Commands
                     await ctx.Channel.SendMessageAsync(eachRoll).ConfigureAwait(false);
                     int rollTotal = diceRolls.GetRange(0, diceAmount).Sum();
                     await ctx.Channel.SendMessageAsync("**Result**: " + diceAmount.ToString() + "D" + diceType.ToString() +
-                                                        "\n" + "**Total** : " + rollTotal.ToString() + modifierString.ToString() + " = " + diceRolledTotal.ToString()).ConfigureAwait(true);
+                                                        "\n" + "**Total** : " + (rollTotal - modifier).ToString() + modifierString.ToString() + " = " + diceRolledTotal.ToString()).ConfigureAwait(true);
                 }
             }
         }
