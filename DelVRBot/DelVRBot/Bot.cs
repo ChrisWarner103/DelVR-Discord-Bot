@@ -65,7 +65,7 @@ namespace DelVRBot
                 AutoReconnect = true,
                 MinimumLogLevel = LogLevel.Debug,
                 Intents = DiscordIntents.All,
-                
+
             };
 
             Client = new DiscordClient(config);
@@ -97,6 +97,7 @@ namespace DelVRBot
             Client.MessageReactionAdded += Client_MessageReactionAdded;
             Client.MessageReactionRemoved += Client_MessageReactionRemoved;
             Client.GuildMemberAdded += Client_GuildMemeberJoined;
+            Client.GuildRoleCreated += OnGuildRoleCreated;
             Client.Resumed += Client_Resumed;
 
             Commands.SetHelpFormatter<CustomHelpFormatter>();
@@ -122,6 +123,11 @@ namespace DelVRBot
             }
             //Anything added to this function needs to be before this
             await Task.Delay(-1);
+        }
+
+        private async Task OnGuildRoleCreated(DiscordClient sender, GuildRoleCreateEventArgs e)
+        {
+            Guild = await Client.GetGuildAsync(Guild.Id, true).ConfigureAwait(false);
         }
 
         //This is called when a user joins the discord sever
@@ -163,8 +169,12 @@ namespace DelVRBot
             return Task.CompletedTask;
         }
 
-        private void LoadReactionEmojisFromConfig()
+        public static void LoadReactionEmojisFromConfig()
         {
+            using (var fs = File.OpenRead("config.json"))
+            using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
+                json = sr.ReadToEnd();
+
             var result = JObject.Parse(json);
             var discordEmojis = result["discordEmojis"].Children();
             var discordRoles = result["discordRoles"].Children();
@@ -175,34 +185,18 @@ namespace DelVRBot
             emojiNames = new List<string>();
             roleIDs = new List<ulong>();
 
-            foreach (var result1 in emojis)
+            for (int i = 0; i < emojis.Count; i++)
             {
-                foreach (JArray JEmojis in result1["emojis"])
-                {
-                    for (int i = 0; i < JEmojis.Count; i++)
-                    {
-                        string name = JEmojis[i]["name"].ToString();
-
-                        emojiNames.Add(name);
-                    }
-
-                }
+                emojiNames.Add(emojis[i]["name"].ToString());
             }
 
-            foreach (var result2 in roles)
+            for (int i = 0; i < roles.Count; i++)
             {
-                foreach (JArray JRoles in result2["roles"])
-                {
-                    for (int i = 0; i < JRoles.Count; i++)
-                    {
-                        string idString = JRoles[i]["id"].ToString();
+                string idString = roles[i]["id"].ToString();
 
-                        ulong id = UInt64.Parse(idString);
+                ulong id = UInt64.Parse(idString);
 
-                        roleIDs.Add(id);
-                    }
-
-                }
+                roleIDs.Add(id);
             }
         }
 
@@ -223,7 +217,7 @@ namespace DelVRBot
             for (int i = 0; i < roleEmojis.Count; i++)
             {
                 string emojiName = e.Emoji.GetDiscordName();
-                if (emojiName == roleEmojis[i] && discordMemeber.Roles.Contains(discordRoles[i]))
+                if ((emojiName == roleEmojis[i] || emojiName == roleEmojis[i].GetDiscordName()) && discordMemeber.Roles.Contains(discordRoles[i]))
                 {
                     await discordMemeber.RevokeRoleAsync(discordRoles[i]).ConfigureAwait(false);
                     return;
@@ -238,22 +232,27 @@ namespace DelVRBot
 
             for (int i = 0; i < emojiNames.Count; i++)
             {
+
                 roleEmojis.Add(DiscordEmoji.FromUnicode(Client, emojiNames[i]));
                 discordRoles.Add(Guild.GetRole(roleIDs[i]));
+                Console.WriteLine(roleEmojis[i].GetDiscordName());
             }
 
             DiscordUser discordUser = await sender.GetUserAsync(e.User.Id);
             DiscordMember discordMemeber = await e.Guild.GetMemberAsync(discordUser.Id);
 
-            for (int i = 0; i < roleEmojis.Count; i++)
+            if (!discordUser.IsBot)
             {
-
-                string emojiName = e.Emoji.GetDiscordName();
-
-                if (emojiName == roleEmojis[i])
+                for (int i = 0; i < roleEmojis.Count; i++)
                 {
-                    await discordMemeber.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
-                    return;
+
+                    string emojiName = e.Emoji.GetDiscordName();
+
+                    if (emojiName == roleEmojis[i] || emojiName == roleEmojis[i].GetDiscordName())
+                    {
+                        await discordMemeber.GrantRoleAsync(Guild.GetRole(roleIDs[i])).ConfigureAwait(false);
+                        return;
+                    }
                 }
             }
         }

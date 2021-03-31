@@ -1,37 +1,39 @@
 {
   "token": "NzgxMTQ2NTY2NjM4NDM2Mzcy.X75Zbg.4OFyPmSmPv699gFOyeT-92jlamU",
   "prefix": "!",
-  "guild": 662081595758477312,
-  "reactionRolesChannel": 780748391457620001,
-  "reactionRolesMesage": 786744118843277312,
+  "guild": 695835309270761472,
+  "reactionRolesChannel": 782812708990877736,
+  "reactionRolesMesage": 826872394928750592,
   "discordEmojis": [
     {
-      "emojis": [
-        [
-          {
-            "name": ":DungeonMaster:"
-          },
-          {
-            "name": ":LookingForGroup:"
-          }
-        ]
-      ]
+      "name": ":ChrisGag:"
+    },
+    {
+      "name": ":ChrisThink:"
+    },
+    {
+      "name": ":ChrisLick:"
+    },
+    {
+      "name": ":ChrisDying:"
     }
   ],
   "discordRoles": [
     {
-      "roles": [
-        [
-          {
-            "id": 664693406320164864,
-            "name": "Dungeon Master"
-          },
-          {
-            "id": 785984414156324874,
-            "name": "Looking for Group"
-          }
-        ]
-      ]
+      "id": 738025540593778700,
+      "name": "Valorant"
+    },
+    {
+      "id": 697585267242172444,
+      "name": "DJ"
+    },
+    {
+      "id": 826873490769969203,
+      "name": "weeb"
+    },
+    {
+      "id": 826880286603739166,
+      "name": "Dumbass"
     }
   ]
 }

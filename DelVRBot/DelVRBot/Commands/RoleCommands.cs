@@ -18,22 +18,14 @@ namespace DelVRBot.Commands
 {
     class RoleCommands : BaseCommandModule
     {
-        private InteractivityResult<MessageReactionAddEventArgs> reactionResults;
-
         static DiscordMember reactedUser;
 
         List<EmojiProperties> emojis;
         List<RoleProperties> roles;
 
-        DiscordEmoji dungeonMasterEmoji;
-        DiscordEmoji lookingForGroupEmoji;
-
-        DiscordRole dungeonMasterRole;
-        DiscordRole lookingForGroupRole;
-
         /// Once you make the edit function you won't need the role reacting part.
 
-        [Command("CreateRollAssigner")]
+        [Command("CreateRoleAssigner")]
         [Hidden]
         [RequireRoles(RoleCheckMode.Any, "Admin", "Alchemist")]
         public async Task RollAssigner(CommandContext ctx)
@@ -43,147 +35,86 @@ namespace DelVRBot.Commands
             {
                 Title = "React using the emoji to get a specific role",
                 Color = DiscordColor.Orange,
-                Description = "React with <:DungeonMaster:786729797438013451> to become a Dungeon Master\n" +
-                              "React with <:LookingForGroup:785988073283649578> to get the Looking for Group role",
             };
 
             var reactionMessage = await ctx.Channel.SendMessageAsync(embed: joinEmbed).ConfigureAwait(false);
 
-            if (Program.DebugMode)
-            {
-                dungeonMasterEmoji = DiscordEmoji.FromName(ctx.Client, ":ChrisThink:");
-                lookingForGroupEmoji = DiscordEmoji.FromName(ctx.Client, ":ChrisGag:");
-
-                dungeonMasterRole = ctx.Guild.GetRole(738025540593778700);
-                lookingForGroupRole = ctx.Guild.GetRole(782768719796502549);
-            }
-            else
-            {
-                dungeonMasterEmoji = DiscordEmoji.FromName(ctx.Client, ":DungeonMaster:");
-                lookingForGroupEmoji = DiscordEmoji.FromName(ctx.Client, ":LookingForGroup:");
-
-                dungeonMasterRole = ctx.Guild.GetRole(664693406320164864);
-                lookingForGroupRole = ctx.Guild.GetRole(785984414156324874);
-            }
-
-
-
-            List<DiscordEmoji> reactionEmojis = new List<DiscordEmoji>();
-            List<ulong> roleIDs = new List<ulong>();
-
-            AssignerEmojis discordEmojis = new AssignerEmojis();
-            emojis = new List<EmojiProperties>();
-
-            AssignerRoles discordRoles = new AssignerRoles();
-            roles = new List<RoleProperties>();
-
-            reactionEmojis.Add(dungeonMasterEmoji);
-            reactionEmojis.Add(lookingForGroupEmoji);
-
-            roleIDs.Add(dungeonMasterRole.Id);
-            roleIDs.Add(lookingForGroupRole.Id);
-
-            await reactionMessage.CreateReactionAsync(dungeonMasterEmoji).ConfigureAwait(false);
-            await reactionMessage.CreateReactionAsync(lookingForGroupEmoji).ConfigureAwait(false);
-
-
-            var jsonObj = JObject.Parse(Bot.json);
-            var emojisArray = jsonObj.GetValue("discordEmojis") as JArray;
-
-            for (int i = 0; i < reactionEmojis.Count; i++)
-            {
-                EmojiProperties emote = new EmojiProperties();
-                RoleProperties role = new RoleProperties();
-                string emojiName = reactionEmojis[i].GetDiscordName();
-                emote.Name = emojiName;
-                role.ID = roleIDs[i];
-                role.Name = ctx.Guild.GetRole(roleIDs[i]).Name;
-
-                emojis.Add(emote);
-                roles.Add(role);
-            }
-
-            discordEmojis.Emojis = new List<List<EmojiProperties>>();
-            discordEmojis.Emojis.Add(emojis);
-            var discordEmojisToken = JObject.FromObject(discordEmojis);
-
-            jsonObj["discordEmojis"][0] = discordEmojisToken;
-
-            discordRoles.Roles = new List<List<RoleProperties>>();
-            discordRoles.Roles.Add(roles);
-            var discordRolesToken = JObject.FromObject(discordRoles);
-
-            jsonObj["discordRoles"][0] = discordRolesToken;
+            //Get config arrays.
+            var configJson = JObject.Parse(Bot.json);
 
             ulong channelID = ctx.Channel.Id;
             ulong reactionMessageID = reactionMessage.Id;
 
-            jsonObj["reactionRolesChannel"] = channelID;
-            jsonObj["reactionRolesMesage"] = reactionMessageID;
+            configJson["reactionRolesChannel"] = channelID;
+            configJson["reactionRolesMesage"] = reactionMessageID;
 
-            string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+            string output = JsonConvert.SerializeObject(configJson, Formatting.Indented);
             File.WriteAllText("config.json", output);
 
             await ctx.Channel.DeleteMessageAsync(ctx.Message).ConfigureAwait(false);
+        }
 
-            await UpdateRoles(ctx).ConfigureAwait(false);
+        [Command("ReactEdit")]
+        [Hidden]
+        [RequireRoles(RoleCheckMode.Any, "Admin", "Alchemist")]
+        public async Task RollEdit(CommandContext ctx, [Description("Message ID")] ulong messageID, [Description("Role ID")] ulong roleID, [Description("Assotiated Emoji")] string emojiID, [Description("Info Text")] [RemainingText] string reactMessage)
+        {
+            //Variables
+            string modifiedEmojiID = emojiID;
 
+            //Get the message and the embed that is attached to it.
+            DiscordMessage message = await ctx.Channel.GetMessageAsync(messageID);
+            DiscordEmbed embed = message.Embeds[0];
+            DiscordEmoji emoji;
+
+            //Pharsing and creating the emoji
+            if (emojiID.Contains(":"))
+            {
+                int firstIndex = emojiID.IndexOf(':');
+                int lastIndex = emojiID.LastIndexOf(':');
+                modifiedEmojiID = emojiID.Substring(firstIndex, lastIndex);
+
+                emoji = DiscordEmoji.FromName(ctx.Client, modifiedEmojiID);
+            }
+            else
+            {
+                emoji = DiscordEmoji.FromUnicode(ctx.Client, modifiedEmojiID);
+            }
+
+
+            string currentDescription = embed.Description;
+            currentDescription += "\nReact with " + emojiID + " " + reactMessage;
+
+            DiscordEmbed newEmbed = new DiscordEmbedBuilder { Title = embed.Title, Color = DiscordColor.Orange, Description = currentDescription };
+
+            await message.ModifyAsync(embed: newEmbed).ConfigureAwait(false);
+            await message.CreateReactionAsync(emoji).ConfigureAwait(false);
+
+            var configJson = JObject.Parse(Bot.json);
+            var emojisArray = (JArray)configJson["discordEmojis"];
+            var roleArray = (JArray)configJson["discordRoles"];
+
+            //Adding new emoji to Json
+            JObject newEmoji = new JObject();
+            newEmoji["name"] = modifiedEmojiID;
+            emojisArray.Add(newEmoji);
+
+            //Adding new role to Json
+            JObject newRole = new JObject();
+            newRole["id"] = roleID;
+            newRole["name"] = ctx.Guild.GetRole(roleID).Name;
+            roleArray.Add(newRole);
+
+            await ctx.Channel.DeleteMessageAsync(ctx.Message).ConfigureAwait(false);
+
+            string output = JsonConvert.SerializeObject(configJson, Formatting.Indented);
+            File.WriteAllText("config.json", output);
+
+            Bot.LoadReactionEmojisFromConfig();
             Bot.Client.MessageReactionRemoved += Client_MessageReactionRemoved;
 
-            while (true)
-            {
-                var interactivity = ctx.Client.GetInteractivity();
-
-                //var reactionResults = await interactivity.CollectReactionsAsync(reactionMessage).ConfigureAwait(false);
-
-                reactionResults = await interactivity.WaitForReactionAsync(
-                    x => x.Message == reactionMessage &&
-                    x.Emoji == dungeonMasterEmoji || x.Emoji == lookingForGroupEmoji).ConfigureAwait(false);
-
-                if (reactionResults.Result.Emoji == dungeonMasterEmoji)
-                {
-                    if (!Program.DebugMode)
-                    {
-                        var role = ctx.Guild.GetRole(roleIDs[0]);
-
-                        reactedUser = (DiscordMember)reactionResults.Result.User;
-
-                        await ctx.Member.GrantRoleAsync(role).ConfigureAwait(false);
-                    }
-                    else
-                    {
-                        var role = ctx.Guild.GetRole(roleIDs[0]);
-                        Console.WriteLine(role);
-
-                        reactedUser = (DiscordMember)reactionResults.Result.User;
-
-                        await ctx.Member.GrantRoleAsync(role).ConfigureAwait(false);
-                    }
-
-                }
-                else if (reactionResults.Result.Emoji == lookingForGroupEmoji)
-                {
-                    if (!Program.DebugMode)
-                    {
-                        var role = ctx.Guild.GetRole(roleIDs[1]);
-
-                        reactedUser = (DiscordMember)reactionResults.Result.User;
-
-                        await ctx.Member.GrantRoleAsync(role).ConfigureAwait(false);
-                    }
-                    else
-                    {
-                        var role = ctx.Guild.GetRole(roleIDs[1]);
-                        Console.WriteLine(role);
-
-                        reactedUser = (DiscordMember)reactionResults.Result.User;
-
-                        await ctx.Member.GrantRoleAsync(role).ConfigureAwait(false);
-                    }
-
-                }
-            }
         }
+
         private async Task Client_MessageReactionRemoved(DiscordClient sender, MessageReactionRemoveEventArgs e)
         {
             DiscordUser discordUser = await sender.GetUserAsync(e.User.Id);
@@ -194,61 +125,10 @@ namespace DelVRBot.Commands
                 string emojiName = e.Emoji.GetDiscordName();
                 if (emojiName == emojis[i].Name && discordMemeber.Roles.Contains(e.Guild.GetRole(roles[i].ID)))
                 {
+                    ;
                     await discordMemeber.RevokeRoleAsync(e.Guild.GetRole(roles[i].ID)).ConfigureAwait(false);
                     return;
                 }
-            }
-        }
-
-        //Updates the roles in Bot.cs so that when the bot restarts it can still use the reaction roles.
-        public async Task UpdateRoles(CommandContext ctx)
-        {
-            using (var fs = File.OpenRead("config.json"))
-            using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
-                Bot.json = await sr.ReadToEndAsync().ConfigureAwait(false);
-
-            var result = JObject.Parse(Bot.json);
-            var discordEmojis = result["discordEmojis"].Children();
-            var discordRoles = result["discordRoles"].Children();
-
-            var emojis = JArray.FromObject(discordEmojis);
-            var roles = JArray.FromObject(discordRoles);
-
-            Bot.emojiNames.Clear();
-            Bot.roleIDs.Clear();
-
-            foreach (var result1 in emojis)
-            {
-                foreach (JArray JEmojis in result1["emojis"])
-                {
-                    for (int i = 0; i < JEmojis.Count; i++)
-                    {
-                        string name = JEmojis[i]["name"].ToString();
-
-                        Bot.emojiNames.Add(name);
-                    }
-                }
-            }
-
-            foreach (var result2 in roles)
-            {
-                foreach (JArray JRoles in result2["roles"])
-                {
-                    for (int i = 0; i < JRoles.Count; i++)
-                    {
-                        string idString = JRoles[i]["id"].ToString();
-
-                        ulong id = UInt64.Parse(idString);
-
-                        Bot.roleIDs.Add(id);
-                    }
-                }
-            }
-
-            for (int i = 0; i < Bot.emojiNames.Count; i++)
-            {
-                Bot.roleEmojis.Add(DiscordEmoji.FromName(Bot.Client, Bot.emojiNames[i]));
-                Bot.discordRoles.Add(ctx.Guild.GetRole(Bot.roleIDs[i]));
             }
         }
 

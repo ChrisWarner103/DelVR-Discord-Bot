@@ -176,8 +176,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -185,8 +183,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -241,8 +237,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -250,8 +244,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -313,8 +305,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -322,8 +312,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -390,8 +378,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -399,8 +385,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -473,8 +457,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -482,8 +464,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -580,8 +560,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -589,8 +567,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
@@ -624,8 +600,6 @@ namespace DelVRBot.Commands
                         {
                             diceRolledTotal += diceRoll + modifier;
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                     }
                     else
@@ -633,8 +607,6 @@ namespace DelVRBot.Commands
                         if (disadvRoll || advRoll)
                         {
                             diceRolls[i] += modifier;
-                            if (diceRolls[i] <= 0)
-                                diceRolls[i] = 1;
                         }
                         else
                             diceRolledTotal += diceRoll;
