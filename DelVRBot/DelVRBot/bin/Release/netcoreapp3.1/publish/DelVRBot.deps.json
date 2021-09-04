@@ -9,10 +9,10 @@
     ".NETCoreApp,Version=v3.1/win-x64": {
       "DelVRBot/1.0.0": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-rc1",
-          "DSharpPlus.CommandsNext": "4.0.0-rc1",
-          "DSharpPlus.Interactivity": "4.0.0-rc1",
-          "DSharpPlus.VoiceNext": "4.0.0-rc1",
+          "DSharpPlus": "4.1.0",
+          "DSharpPlus.CommandsNext": "4.1.0",
+          "DSharpPlus.Interactivity": "4.1.0",
+          "DSharpPlus.VoiceNext": "4.1.0",
           "TweetinviAPI": "5.0.3",
           "TweetinviAPI.AspNetPlugin": "5.0.3",
           "TweetinviAPI.WebhooksPlugin": "4.0.0"
@@ -37,11 +37,11 @@
           }
         }
       },
-      "DSharpPlus/4.0.0-rc1": {
+      "DSharpPlus/4.1.0": {
         "dependencies": {
-          "Emzi0767.Common": "2.2.2",
-          "Microsoft.Extensions.Logging.Abstractions": "3.1.8",
-          "Newtonsoft.Json": "12.0.3",
+          "Emzi0767.Common": "2.6.2",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Newtonsoft.Json": "13.0.1",
           "System.Memory": "4.5.4",
           "System.Net.Http": "4.3.4",
           "System.Net.WebSockets": "4.3.0",
@@ -50,45 +50,45 @@
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
-      "DSharpPlus.CommandsNext/4.0.0-rc1": {
+      "DSharpPlus.CommandsNext/4.1.0": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-rc1",
-          "Microsoft.Extensions.DependencyInjection": "3.1.7"
+          "DSharpPlus": "4.1.0",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.CommandsNext.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
-      "DSharpPlus.Interactivity/4.0.0-rc1": {
+      "DSharpPlus.Interactivity/4.1.0": {
         "dependencies": {
           "ConcurrentHashSet": "1.1.0",
-          "DSharpPlus": "4.0.0-rc1"
+          "DSharpPlus": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.Interactivity.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
-      "DSharpPlus.VoiceNext/4.0.0-rc1": {
+      "DSharpPlus.VoiceNext/4.1.0": {
         "dependencies": {
-          "DSharpPlus": "4.0.0-rc1",
+          "DSharpPlus": "4.1.0",
           "DSharpPlus.VoiceNext.Natives": "1.0.0",
-          "System.Threading.Channels": "4.7.0"
+          "System.Threading.Channels": "5.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/DSharpPlus.VoiceNext.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
@@ -102,44 +102,44 @@
           }
         }
       },
-      "Emzi0767.Common/2.2.2": {
+      "Emzi0767.Common/2.6.2": {
         "dependencies": {
-          "System.Collections.Immutable": "1.7.0",
+          "System.Collections.Immutable": "5.0.0",
           "System.Memory": "4.5.4",
-          "System.Runtime.CompilerServices.Unsafe": "4.7.1",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netcoreapp2.1/Emzi0767.Common.dll": {
-            "assemblyVersion": "2.2.2.0",
-            "fileVersion": "2.2.2.0"
+            "assemblyVersion": "2.6.2.0",
+            "fileVersion": "2.6.2.0"
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection/3.1.7": {
+      "Microsoft.Extensions.DependencyInjection/5.0.1": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.7"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {
-            "assemblyVersion": "3.1.7.0",
-            "fileVersion": "3.100.720.37108"
+          "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "5.0.0.1",
+            "fileVersion": "5.0.120.57516"
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.7": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "assemblyVersion": "3.1.7.0",
-            "fileVersion": "3.100.720.37108"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/3.1.8": {
+      "Microsoft.Extensions.Logging.Abstractions/5.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "assemblyVersion": "3.1.8.0",
-            "fileVersion": "3.100.820.42004"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
@@ -153,11 +153,11 @@
           "runtime.win.Microsoft.Win32.Primitives": "4.3.0"
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.3.23909"
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
           }
         }
       },
@@ -331,7 +331,14 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Collections.Immutable/1.7.0": {},
+      "System.Collections.Immutable/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Collections.Immutable.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
@@ -619,11 +626,11 @@
           "runtime.any.System.Runtime": "4.3.0"
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "assemblyVersion": "4.0.6.0",
-            "fileVersion": "4.700.20.12001"
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
@@ -853,7 +860,14 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Threading.Channels/4.7.0": {},
+      "System.Threading.Channels/5.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
       "System.Threading.Overlapped/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
@@ -888,7 +902,7 @@
       "TweetinviAPI/5.0.3": {
         "dependencies": {
           "Autofac": "4.9.4",
-          "Newtonsoft.Json": "12.0.3",
+          "Newtonsoft.Json": "13.0.1",
           "System.Collections": "4.3.0",
           "System.Net.Http": "4.3.4",
           "System.Reflection.TypeExtensions": "4.5.1"
@@ -972,33 +986,33 @@
       "path": "concurrenthashset/1.1.0",
       "hashPath": "concurrenthashset.1.1.0.nupkg.sha512"
     },
-    "DSharpPlus/4.0.0-rc1": {
+    "DSharpPlus/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uuOdv1IjXbPXzTYXL0f/cDcXVTAXfLLAgU/Bxb2GgGGLKqikdV1oc9AlFxix4cNZlOcj96nEq4ndzECEyN6MLg==",
-      "path": "dsharpplus/4.0.0-rc1",
-      "hashPath": "dsharpplus.4.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-s1QTvwMvbTTmIviOaVOyFRH2NAwW9IXMnCzevLrEFV6XFJ3ZnYrF2B03K6iA2U9uChUTZVOSNkhRNcPqqZHzCA==",
+      "path": "dsharpplus/4.1.0",
+      "hashPath": "dsharpplus.4.1.0.nupkg.sha512"
     },
-    "DSharpPlus.CommandsNext/4.0.0-rc1": {
+    "DSharpPlus.CommandsNext/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aK3H+WgoA9Gwvkzl9mul7Va+jijA8ajOZ6s8mBLW9iCGAJjVl7DUxI256AFAS1YvGRjeR7Ar61fwq6z7daZp0w==",
-      "path": "dsharpplus.commandsnext/4.0.0-rc1",
-      "hashPath": "dsharpplus.commandsnext.4.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-4rxtz2pWEsJpPBjtnWEB6q5TmFlKLc7w934CQHS26Ylj85/9k+aYLW7e61TEcsd/+zLjUs7BF82YvlhGKImrZQ==",
+      "path": "dsharpplus.commandsnext/4.1.0",
+      "hashPath": "dsharpplus.commandsnext.4.1.0.nupkg.sha512"
     },
-    "DSharpPlus.Interactivity/4.0.0-rc1": {
+    "DSharpPlus.Interactivity/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jzWMdOjD3w7U2oiNlkgOwKXjZWFvnvS9wGkZRV6K5vIcOB5KzLQsPu1cAj9Pv5pwV7zcxocJvfbq/2psWcSi5g==",
-      "path": "dsharpplus.interactivity/4.0.0-rc1",
-      "hashPath": "dsharpplus.interactivity.4.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-FTQXMqGoWvGMox+UyybL0Jc/P12xTCIUfMRF0n3974Sa5QiwrqhDdP02lHmUS7k7dQF+vMY/YLjLyYdPB7hpFw==",
+      "path": "dsharpplus.interactivity/4.1.0",
+      "hashPath": "dsharpplus.interactivity.4.1.0.nupkg.sha512"
     },
-    "DSharpPlus.VoiceNext/4.0.0-rc1": {
+    "DSharpPlus.VoiceNext/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RxczqNfAeisf3sCzh4axStIaFw8VzXxv5Be98uTkV/vVOOMrmyvt+vbkrKsYbl+0pXjO1T+zSJ/cLuPJf7Y/OQ==",
-      "path": "dsharpplus.voicenext/4.0.0-rc1",
-      "hashPath": "dsharpplus.voicenext.4.0.0-rc1.nupkg.sha512"
+      "sha512": "sha512-QbuxRaT/1GFoY9pCNraQ2XGLZWFXE8z/FQoXsOpTQqFW4UzC+fVV+2kXVMhuS6zJP+E96MRC2kveIgzwoVXJfA==",
+      "path": "dsharpplus.voicenext/4.1.0",
+      "hashPath": "dsharpplus.voicenext.4.1.0.nupkg.sha512"
     },
     "DSharpPlus.VoiceNext.Natives/1.0.0": {
       "type": "package",
@@ -1007,33 +1021,33 @@
       "path": "dsharpplus.voicenext.natives/1.0.0",
       "hashPath": "dsharpplus.voicenext.natives.1.0.0.nupkg.sha512"
     },
-    "Emzi0767.Common/2.2.2": {
+    "Emzi0767.Common/2.6.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JhTsAPvDYgy66EO32FuzHUMxNTij4rmO02nF9z59z+HY5ofSEaJ3feH9/TwLNVOD0gOiFvF+EyCoDNJBma9xTA==",
-      "path": "emzi0767.common/2.2.2",
-      "hashPath": "emzi0767.common.2.2.2.nupkg.sha512"
+      "sha512": "sha512-/4dew6o2Y8xN0Eu025mDBE/abp/nOVtX59EnZn67ILMqRTk2Mqlnr6oEScSnuLrld8VsIgy+8vURirL6WBpUBA==",
+      "path": "emzi0767.common/2.6.2",
+      "hashPath": "emzi0767.common.2.6.2.nupkg.sha512"
     },
-    "Microsoft.Extensions.DependencyInjection/3.1.7": {
+    "Microsoft.Extensions.DependencyInjection/5.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yp38AFc5tJQZkjINjXBcxq+dANU06lo27D84duitZthtRPsgKJL87uf9RWRsDdRsWd+kXflmdMWFLKFjyKx6Pw==",
-      "path": "microsoft.extensions.dependencyinjection/3.1.7",
-      "hashPath": "microsoft.extensions.dependencyinjection.3.1.7.nupkg.sha512"
+      "sha512": "sha512-//mDNrYeiJ0eh/awFhDFJQzkRVra/njU5Y4fyK7X29g5HScrzbUkKOKlyTtygthcGFt4zNC8G5CFCjb/oizomA==",
+      "path": "microsoft.extensions.dependencyinjection/5.0.1",
+      "hashPath": "microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512"
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.7": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oKL2yNtTN1/cOp+cbdyv5TeLzO+GkO9B3fvbcPzKWTNCkDoH3ccYS3FWC1p4KSYe9frW4WsyfSTeM8X+xftOig==",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.7",
-      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.3.1.7.nupkg.sha512"
+      "sha512": "sha512-ORj7Zh81gC69TyvmcUm9tSzytcy8AVousi+IVRAI8nLieQjOFryRusSFh7+aLk16FN9pQNqJAiMd7BTKINK0kA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/5.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Logging.Abstractions/3.1.8": {
+    "Microsoft.Extensions.Logging.Abstractions/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LxQPR/KE4P9nx304VcFipWPcW8ZOZOGHuiYlG0ncAQJItogDzR9nyYUNvziLObx2MfX2Z9iCTdAqEtoImaQOYg==",
-      "path": "microsoft.extensions.logging.abstractions/3.1.8",
-      "hashPath": "microsoft.extensions.logging.abstractions.3.1.8.nupkg.sha512"
+      "sha512": "sha512-NxP6ahFcBnnSfwNBi2KH2Oz8Xl5Sm2krjId/jRR3I7teFphwiUoUeZPwTNA21EX+5PtjqmyAvKaOeBXcJjcH/w==",
+      "path": "microsoft.extensions.logging.abstractions/5.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.1": {
       "type": "package",
@@ -1056,12 +1070,12 @@
       "path": "microsoft.win32.primitives/4.3.0",
       "hashPath": "microsoft.win32.primitives.4.3.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/12.0.3": {
+    "Newtonsoft.Json/13.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
-      "path": "newtonsoft.json/12.0.3",
-      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     },
     "runtime.any.System.Collections/4.3.0": {
       "type": "package",
@@ -1350,12 +1364,12 @@
       "path": "system.collections.concurrent/4.3.0",
       "hashPath": "system.collections.concurrent.4.3.0.nupkg.sha512"
     },
-    "System.Collections.Immutable/1.7.0": {
+    "System.Collections.Immutable/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RVSM6wZUo6L2y6P3vN6gjUtyJ2IF2RVtrepF3J7nrDKfFQd5u/SnSUFclchYQis8/k5scHy9E+fVeKVQLnnkzw==",
-      "path": "system.collections.immutable/1.7.0",
-      "hashPath": "system.collections.immutable.1.7.0.nupkg.sha512"
+      "sha512": "sha512-FXkLXiK0sVVewcso0imKQoOxjoPAj42R8HtjjbSjVPAzwDfzoyoznWxgA3c38LDbN9SJux1xXoXYAhz98j7r2g==",
+      "path": "system.collections.immutable/5.0.0",
+      "hashPath": "system.collections.immutable.5.0.0.nupkg.sha512"
     },
     "System.Diagnostics.Debug/4.3.0": {
       "type": "package",
@@ -1539,12 +1553,12 @@
       "path": "system.runtime/4.3.0",
       "hashPath": "system.runtime.4.3.0.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
-      "path": "system.runtime.compilerservices.unsafe/4.7.1",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512"
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
     },
     "System.Runtime.Extensions/4.3.0": {
       "type": "package",
@@ -1672,12 +1686,12 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
-    "System.Threading.Channels/4.7.0": {
+    "System.Threading.Channels/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gdOOXBhtt2UpTxYJm1DRmoqNfYg5ypvhzhVt0vxKhzxXFjS81r8yIOSFsJYLRa1Jc14GBAqCnjxJstO3zBN7gg==",
-      "path": "system.threading.channels/4.7.0",
-      "hashPath": "system.threading.channels.4.7.0.nupkg.sha512"
+      "sha512": "sha512-RLBIxntLaG9pRmmuVDwY1kc8Bvp/FQzSxPU+19VekkScKkWtVP9r8bLhm28ama3usc816UBrmkg3vv3jUea/hw==",
+      "path": "system.threading.channels/5.0.0",
+      "hashPath": "system.threading.channels.5.0.0.nupkg.sha512"
     },
     "System.Threading.Overlapped/4.3.0": {
       "type": "package",

@@ -101,3 +101,7 @@ C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\Tweet
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\Tweetinvi.dll
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\Tweetinvi.AspNet.dll
 C:\Users\chris\Desktop\DelVR Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\Tweetinvi.Webhooks.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Debug\netcoreapp3.1\DelVRBot.csproj.CoreCompileInputs.cache
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\obj\Debug\netcoreapp3.1\DelVRBot.genruntimeconfig.cache
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\ChrisWarner\source\repos\DelVR-Bot\DelVR-Bot\DelVRBot\DelVRBot\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
