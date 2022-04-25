@@ -1,2 +1,2 @@
-# DelVR-Bot
-This is the repository for the DelVR discord bot for the DelVR server
+# DelVR-Discord-Bot
+This program was designed to be used as a discord bot for the DelVR server
